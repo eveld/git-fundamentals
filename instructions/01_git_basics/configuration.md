@@ -68,6 +68,3 @@ Verify that your Git configuration is correct by running the commands above. Whe
 
 <instruqt-task id="git_configured"></instruqt-task>
 
----
-
-**Next:** Create your first Git repository

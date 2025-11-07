@@ -164,6 +164,3 @@ The staging area might seem like extra work, but it gives you control:
 - Good commit messages make history useful
 - You can commit directly with `-a` for tracked files
 
----
-
-**Next:** Learn to ignore files with .gitignore

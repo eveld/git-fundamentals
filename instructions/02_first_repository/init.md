@@ -63,6 +63,3 @@ Initialize a Git repository in a directory called `my-project` in your workspace
 
 <instruqt-task id="repo_initialized"></instruqt-task>
 
----
-
-**Next:** Make your first commit

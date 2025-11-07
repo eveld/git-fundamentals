@@ -240,6 +240,3 @@ After pushing changes in the previous exercise, have the remote get ahead of you
 
 <instruqt-task id="changes_pulled"></instruqt-task>
 
----
-
-**Next:** Practice collaboration workflows

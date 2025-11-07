@@ -126,6 +126,3 @@ Create a `.gitignore` file in your repository with at least one pattern, and com
 
 <instruqt-task id="gitignore_working"></instruqt-task>
 
----
-
-**Next:** Explore Git's commit history tools

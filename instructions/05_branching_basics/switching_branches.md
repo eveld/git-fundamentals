@@ -187,6 +187,3 @@ git diff main..feature
 - Commit or stash changes before switching to avoid conflicts
 - Use `git switch` for clarity (if using modern Git)
 
----
-
-**Next:** Learn about fast-forward merges

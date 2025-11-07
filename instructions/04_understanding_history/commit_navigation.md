@@ -164,6 +164,3 @@ This shows every place HEAD has pointed, even if commits aren't in the current b
 - `git diff` compares any two commits
 - Relative references make navigation easy without memorizing hashes
 
----
-
-**Next:** Understanding detached HEAD state

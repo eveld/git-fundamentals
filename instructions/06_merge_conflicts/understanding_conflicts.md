@@ -192,6 +192,3 @@ While you can't always avoid conflicts, you can minimize them:
 - `git status` shows which files have conflicts
 - You must manually resolve conflicts before completing the merge
 
----
-
-**Next:** Learn how to resolve conflicts

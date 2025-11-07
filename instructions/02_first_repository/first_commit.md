@@ -117,6 +117,3 @@ Create a file called `README.md` with some content, stage it with `git add`, and
 
 <instruqt-task id="first_commit"></instruqt-task>
 
----
-
-**Next:** Learn to view and navigate commit history

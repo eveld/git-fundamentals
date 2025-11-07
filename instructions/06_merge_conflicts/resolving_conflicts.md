@@ -258,6 +258,3 @@ Create a merge conflict by modifying the same line in a file on two different br
 
 <instruqt-task id="conflict_resolved"></instruqt-task>
 
----
-
-**Next:** Work with remote repositories

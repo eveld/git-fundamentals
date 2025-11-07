@@ -91,6 +91,3 @@ This chain of commits is your project's history. You can always go back to any p
 - `HEAD` points to your current position in history
 - Commits are listed newest first by default
 
----
-
-**Next:** Learn about staging changes

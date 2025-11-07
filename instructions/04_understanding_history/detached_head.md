@@ -207,6 +207,3 @@ If you see "detached HEAD", don't worry:
 3. If you made commits you want to keep, create a branch first
 4. If you made commits you don't want, just checkout main - Git will warn you but nothing is lost permanently (Git keeps orphaned commits for a while)
 
----
-
-**Next:** Learn about branching

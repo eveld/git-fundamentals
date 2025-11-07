@@ -226,6 +226,3 @@ Make changes in your cloned repository, commit them, and push them to the remote
 
 <instruqt-task id="changes_pushed"></instruqt-task>
 
----
-
-**Next:** Learn to pull changes from remotes

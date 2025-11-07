@@ -132,6 +132,3 @@ Create a new branch for feature development. You can name it anything you like (
 
 <instruqt-task id="branch_created"></instruqt-task>
 
----
-
-**Next:** Learn to switch between branches

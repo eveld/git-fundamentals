@@ -124,6 +124,3 @@ Practice staging multiple files. Create at least two new files in your repositor
 
 <instruqt-task id="staged_files"></instruqt-task>
 
----
-
-**Next:** Understand the complete commit workflow

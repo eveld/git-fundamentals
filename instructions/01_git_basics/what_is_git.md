@@ -37,6 +37,3 @@ Git has become the industry standard for version control because:
 
 In this lab, you'll learn Git fundamentals through hands-on practice. Let's get started!
 
----
-
-**Next:** Configure your Git identity

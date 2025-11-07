@@ -187,6 +187,3 @@ Clone the team project repository from `/opt/git/team-project.git` into your wor
 
 <instruqt-task id="remote_cloned"></instruqt-task>
 
----
-
-**Next:** Learn to push changes to remotes

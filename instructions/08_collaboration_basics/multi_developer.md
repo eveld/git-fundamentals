@@ -344,6 +344,3 @@ git push origin main
 - Use branches for features to avoid blocking others
 - Clear commit messages help team coordination
 
----
-
-**Next:** Wrap up and next steps

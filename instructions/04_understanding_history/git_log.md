@@ -185,6 +185,3 @@ git log --grep="test" --oneline
 - `--grep` and `-S` help you find specific commits
 - Combine options to get exactly the view you need
 
----
-
-**Next:** Learn to navigate between commits

@@ -186,6 +186,3 @@ Create a feature branch, make one or more commits on it, then merge it back into
 
 <instruqt-task id="branch_merged"></instruqt-task>
 
----
-
-**Next:** Learn how to handle merge conflicts
