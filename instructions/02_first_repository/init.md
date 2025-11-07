@@ -6,14 +6,14 @@ To start tracking a project with Git, you need to initialize a repository. This 
 
 Let's create a simple project and initialize Git:
 
-```bash
+<instruqt-code language="bash">
 # Create a new directory for your project
 mkdir my-project
 cd my-project
 
 # Initialize Git
 git init
-```
+</instruqt-code>
 
 You should see: `Initialized empty Git repository in /root/workspace/my-project/.git/`
 
@@ -28,9 +28,9 @@ The `git init` command created a hidden `.git` directory inside your project. Th
 
 Let's take a look:
 
-```bash
+<instruqt-code language="bash">
 ls -la
-```
+</instruqt-code>
 
 You'll see `.git` in the listing. This is Git's database for your project.
 
@@ -38,19 +38,19 @@ You'll see `.git` in the listing. This is Git's database for your project.
 
 At any time, you can check the status of your repository:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 Right now, you'll see:
 
-```
+<instruqt-code language="text">
 On branch main
 
 No commits yet
 
 nothing to commit (create/copy files and use "git add" to track)
-```
+</instruqt-code>
 
 This tells you:
 - You're on the `main` branch

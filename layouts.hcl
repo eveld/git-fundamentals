@@ -3,8 +3,13 @@ resource "layout" "terminal_instructions" {
     width = 60
 
     tab "terminal" {
-      title = "Git Terminal"
+      title = "Terminal"
       target = resource.terminal.shell
+    }
+
+    tab "editor" {
+      title = "Editor"
+      target = resource.editor.code
     }
   }
 

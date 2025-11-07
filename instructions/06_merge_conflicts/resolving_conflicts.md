@@ -14,9 +14,9 @@ Now that you understand what conflicts are, let's learn how to resolve them. The
 
 First, see which files have conflicts:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 Look for files marked as "both modified" under "Unmerged paths".
 
@@ -24,59 +24,59 @@ Look for files marked as "both modified" under "Unmerged paths".
 
 Open the conflicted file:
 
-```bash
+<instruqt-code language="bash">
 cat conflict-demo.txt
-```
+</instruqt-code>
 
 You'll see the conflict markers:
 
-```
+<instruqt-code language="text">
 <<<<<<< HEAD
 Line 1: Modified by main
 =======
 Line 1: Modified by feature
 >>>>>>> feature-branch
-```
+</instruqt-code>
 
 ## Step 3: Decide What to Keep
 
 You have several options:
 
 **Option 1: Keep your changes (HEAD)**
-```
+<instruqt-code language="text">
 Line 1: Modified by main
-```
+</instruqt-code>
 
 **Option 2: Keep their changes (incoming)**
-```
+<instruqt-code language="text">
 Line 1: Modified by feature
-```
+</instruqt-code>
 
 **Option 3: Keep both (in some order)**
-```
+<instruqt-code language="text">
 Line 1: Modified by main
 Line 1: Modified by feature
-```
+</instruqt-code>
 
 **Option 4: Write something entirely new**
-```
+<instruqt-code language="text">
 Line 1: Combined the best of both versions
-```
+</instruqt-code>
 
 ## Step 4: Edit the File
 
 Let's resolve the conflict by keeping the feature branch version. Edit the file:
 
-```bash
+<instruqt-code language="bash">
 # Use echo to overwrite with our chosen version
 echo "Line 1: Modified by feature" > conflict-demo.txt
-```
+</instruqt-code>
 
 Or use a text editor:
 
-```bash
+<instruqt-code language="bash">
 nano conflict-demo.txt
-```
+</instruqt-code>
 
 **Important**: Remove ALL conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) and leave only the content you want.
 
@@ -84,9 +84,9 @@ nano conflict-demo.txt
 
 Tell Git the conflict is resolved:
 
-```bash
+<instruqt-code language="bash">
 git add conflict-demo.txt
-```
+</instruqt-code>
 
 This marks the file as resolved.
 
@@ -94,36 +94,36 @@ This marks the file as resolved.
 
 Verify the conflict is resolved:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 You should see:
 
-```
+<instruqt-code language="text">
 All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 
 Changes to be committed:
         modified:   conflict-demo.txt
-```
+</instruqt-code>
 
 ## Step 7: Complete the Merge
 
 Finish the merge with a commit:
 
-```bash
+<instruqt-code language="bash">
 git commit
-```
+</instruqt-code>
 
 Git opens your editor with a pre-filled merge commit message:
 
-```
+<instruqt-code language="text">
 Merge branch 'feature-branch' into main
 
 # Conflicts:
 #       conflict-demo.txt
-```
+</instruqt-code>
 
 You can keep this message or modify it. Save and close the editor.
 
@@ -131,20 +131,20 @@ You can keep this message or modify it. Save and close the editor.
 
 Check the log:
 
-```bash
+<instruqt-code language="bash">
 git log --oneline --graph --all
-```
+</instruqt-code>
 
 You'll see the merge commit:
 
-```
+<instruqt-code language="text">
 *   4567890 (HEAD -> main) Merge branch 'feature-branch' into main
 |\
 | * 2345678 (feature-branch) Modify line 1 in feature
 * | 3456789 Modify line 1 in main
 |/
 * 1234567 Add conflict demo file
-```
+</instruqt-code>
 
 Notice the merge commit has two parent commits, shown by the graph's structure.
 
@@ -152,13 +152,13 @@ Notice the merge commit has two parent commits, shown by the graph's structure.
 
 Git can launch graphical merge tools to help:
 
-```bash
+<instruqt-code language="bash">
 # See available tools
 git mergetool --tool-help
 
 # Launch a merge tool (if available)
 git mergetool
-```
+</instruqt-code>
 
 Common tools include: `vimdiff`, `meld`, `kdiff3`, `opendiff` (macOS).
 
@@ -166,9 +166,9 @@ Common tools include: `vimdiff`, `meld`, `kdiff3`, `opendiff` (macOS).
 
 If you want to give up and start over:
 
-```bash
+<instruqt-code language="bash">
 git merge --abort
-```
+</instruqt-code>
 
 This returns everything to the state before you started the merge.
 
@@ -176,7 +176,7 @@ This returns everything to the state before you started the merge.
 
 Let's resolve a more realistic scenario:
 
-```bash
+<instruqt-code language="bash">
 # On main branch
 git checkout main
 
@@ -204,11 +204,11 @@ git commit -m "Modify files on main"
 
 # Attempt merge
 git merge feature
-```
+</instruqt-code>
 
 You'll have conflicts in both files. Resolve them one by one:
 
-```bash
+<instruqt-code language="bash">
 # See which files conflict
 git status
 
@@ -222,7 +222,7 @@ git add file2.txt
 
 # Complete the merge
 git commit
-```
+</instruqt-code>
 
 ## Tips for Resolving Conflicts
 
@@ -246,9 +246,9 @@ git commit
 
 Search for conflict markers in all files:
 
-```bash
+<instruqt-code language="bash">
 git grep "<<<<<<< HEAD"
-```
+</instruqt-code>
 
 If this returns nothing, you've cleaned up all conflicts.
 

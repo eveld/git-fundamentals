@@ -17,7 +17,7 @@ Common reasons to ignore files:
 
 Let's create a `.gitignore` file:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # Create .gitignore
@@ -40,7 +40,7 @@ env/
 # Logs
 *.log
 EOF
-```
+</instruqt-code>
 
 ## How .gitignore Works
 
@@ -56,18 +56,18 @@ The `.gitignore` file uses patterns:
 
 Let's create some files that should be ignored:
 
-```bash
+<instruqt-code language="bash">
 # Create files that match our ignore patterns
 touch debug.log
 mkdir -p __pycache__
 touch __pycache__/module.pyc
-```
+</instruqt-code>
 
 Check Git status:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 You'll see `.gitignore` listed as untracked, but not `debug.log` or the `__pycache__` directory. Git is ignoring them!
 
@@ -75,30 +75,30 @@ You'll see `.gitignore` listed as untracked, but not `debug.log` or the `__pycac
 
 The `.gitignore` file itself should be tracked:
 
-```bash
+<instruqt-code language="bash">
 git add .gitignore
 git commit -m "Add .gitignore for Python project"
-```
+</instruqt-code>
 
 ## Viewing Ignored Files
 
 To see which files are being ignored:
 
-```bash
+<instruqt-code language="bash">
 git status --ignored
-```
+</instruqt-code>
 
 ## When Gitignore Doesn't Work
 
 If you already committed a file before adding it to `.gitignore`, Git will continue tracking it. To untrack it:
 
-```bash
+<instruqt-code language="bash">
 # Remove from Git but keep the file
 git rm --cached filename
 
 # Commit the removal
 git commit -m "Stop tracking filename"
-```
+</instruqt-code>
 
 Now `.gitignore` will work for that file.
 
@@ -110,13 +110,13 @@ If a file is already tracked by Git, adding it to `.gitignore` won't untrack it.
 
 You can also create a global `.gitignore` for your entire system:
 
-```bash
+<instruqt-code language="bash">
 # Set up global ignore file
 git config --global core.excludesfile ~/.gitignore_global
 
 # Add OS-specific patterns
 echo ".DS_Store" >> ~/.gitignore_global
-```
+</instruqt-code>
 
 This is useful for OS or editor-specific files that you want ignored in all your projects.
 

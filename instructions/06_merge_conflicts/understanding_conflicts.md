@@ -22,11 +22,11 @@ Don't panic when you see a conflict - it just means Git needs your help deciding
 
 Fast-forward merges work when branches haven't diverged. But look at this scenario:
 
-```
+<instruqt-code language="text">
         main: A → B → C
                    ↓
         feature:   B → D → E
-```
+</instruqt-code>
 
 Both branches have new commits after B:
 - Main has commit C
@@ -38,11 +38,11 @@ If C and E modified the same lines in a file, Git can't merge them automatically
 
 When branches diverge, Git performs a **three-way merge**:
 
-```
+<instruqt-code language="text">
         main: A → B → C ────┐
                    ↓         ↓
         feature:   B → D → E → M
-```
+</instruqt-code>
 
 Git creates a new merge commit (M) that combines both C and E. This merge commit has two parents: C and E.
 
@@ -52,7 +52,7 @@ If the changes don't overlap, Git handles this automatically. If they do overlap
 
 Let's create a scenario with diverged branches:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # Make sure you're on main with at least one commit
@@ -78,22 +78,22 @@ git checkout main
 echo "Line 1: Modified by main" > conflict-demo.txt
 git add conflict-demo.txt
 git commit -m "Modify line 1 in main"
-```
+</instruqt-code>
 
 Now visualize the divergence:
 
-```bash
+<instruqt-code language="bash">
 git log --oneline --graph --all
-```
+</instruqt-code>
 
 You'll see something like:
 
-```
+<instruqt-code language="text">
 * 3456789 (HEAD -> main) Modify line 1 in main
 | * 2345678 (feature-branch) Modify line 1 in feature
 |/
 * 1234567 Add conflict demo file
-```
+</instruqt-code>
 
 The branches have diverged!
 
@@ -101,17 +101,17 @@ The branches have diverged!
 
 Try to merge now:
 
-```bash
+<instruqt-code language="bash">
 git merge feature-branch
-```
+</instruqt-code>
 
 You'll see:
 
-```
+<instruqt-code language="text">
 Auto-merging conflict-demo.txt
 CONFLICT (content): Merge conflict in conflict-demo.txt
 Automatic merge failed; fix conflicts and then commit the result.
-```
+</instruqt-code>
 
 Git is telling you:
 1. It tried to merge `conflict-demo.txt`
@@ -122,20 +122,20 @@ Git is telling you:
 
 See what's going on:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 You'll see:
 
-```
+<instruqt-code language="text">
 You have unmerged paths.
   (fix conflicts and run "git commit")
 
 Unmerged paths:
   (use "git add <file>..." to mark resolution)
         both modified:   conflict-demo.txt
-```
+</instruqt-code>
 
 Git is in the middle of a merge, waiting for you to resolve the conflict.
 
@@ -143,19 +143,19 @@ Git is in the middle of a merge, waiting for you to resolve the conflict.
 
 Look at the conflicted file:
 
-```bash
+<instruqt-code language="bash">
 cat conflict-demo.txt
-```
+</instruqt-code>
 
 You'll see conflict markers:
 
-```
+<instruqt-code language="text">
 <<<<<<< HEAD
 Line 1: Modified by main
 =======
 Line 1: Modified by feature
 >>>>>>> feature-branch
-```
+</instruqt-code>
 
 Let's break this down:
 

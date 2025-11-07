@@ -33,19 +33,19 @@ A **bare repository** is a Git repository with no working directory - it's just 
 
 Let's clone the pre-configured team project:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace
 
 # Clone the team project
 git clone /opt/git/team-project.git
-```
+</instruqt-code>
 
 You'll see output like:
 
-```
+<instruqt-code language="text">
 Cloning into 'team-project'...
 done.
-```
+</instruqt-code>
 
 This creates a directory called `team-project` with the repository's contents.
 
@@ -62,7 +62,7 @@ Git did several things:
 
 Navigate into the cloned repository:
 
-```bash
+<instruqt-code language="bash">
 cd team-project
 
 # See the files
@@ -73,7 +73,7 @@ git status
 
 # View commit history
 git log --oneline
-```
+</instruqt-code>
 
 You'll see files and commits that existed in the remote repository.
 
@@ -81,20 +81,20 @@ You'll see files and commits that existed in the remote repository.
 
 See what remotes are configured:
 
-```bash
+<instruqt-code language="bash">
 # List remotes
 git remote
 
 # More details
 git remote -v
-```
+</instruqt-code>
 
 You'll see:
 
-```
+<instruqt-code language="text">
 origin  /opt/git/team-project.git (fetch)
 origin  /opt/git/team-project.git (push)
-```
+</instruqt-code>
 
 `origin` is configured for both fetching (downloading) and pushing (uploading) changes.
 
@@ -102,24 +102,24 @@ origin  /opt/git/team-project.git (push)
 
 When you clone, Git creates **remote-tracking branches**. These are local references to the state of branches on the remote.
 
-```bash
+<instruqt-code language="bash">
 # See all branches including remote-tracking branches
 git branch -a
-```
+</instruqt-code>
 
 You'll see:
 
-```
+<instruqt-code language="text">
 * main
   remotes/origin/main
-```
+</instruqt-code>
 
 - `main` is your local branch
 - `remotes/origin/main` is the remote-tracking branch showing where `main` was on `origin` when you last synchronized
 
 ## The Clone Command Syntax
 
-```bash
+<instruqt-code language="bash">
 # Basic syntax
 git clone <repository-url>
 
@@ -128,23 +128,23 @@ git clone <repository-url> <directory-name>
 
 # Example with custom name
 git clone /opt/git/team-project.git my-team-project
-```
+</instruqt-code>
 
 ## Cloning vs Creating
 
 **Creating a new repository** (what we did before):
-```bash
+<instruqt-code language="bash">
 mkdir myproject
 cd myproject
 git init
-```
+</instruqt-code>
 
 **Cloning an existing repository**:
-```bash
+<instruqt-code language="bash">
 git clone <url>
 cd <repository-name>
 # Already initialized and ready to go
-```
+</instruqt-code>
 
 Cloning is faster when a repository already exists.
 
@@ -152,9 +152,9 @@ Cloning is faster when a repository already exists.
 
 Get detailed information about the origin remote:
 
-```bash
+<instruqt-code language="bash">
 git remote show origin
-```
+</instruqt-code>
 
 This shows:
 - Remote URL
@@ -165,7 +165,7 @@ This shows:
 
 In real projects, you'd clone from URLs like:
 
-```bash
+<instruqt-code language="bash">
 # GitHub (HTTPS)
 git clone https://github.com/user/repo.git
 
@@ -177,7 +177,7 @@ git clone https://gitlab.com/user/repo.git
 
 # Company server
 git clone ssh://git@company.com/repos/project.git
-```
+</instruqt-code>
 
 We're using local paths for simplicity in this lab.
 

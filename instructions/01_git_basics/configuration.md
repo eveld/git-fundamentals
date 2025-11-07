@@ -12,26 +12,26 @@ Your Git identity has two parts: a name (how you want to be known in commit hist
 
 Now let's set up your Git identity. You'll use these two commands to tell Git who you are:
 
-```bash
+<instruqt-code language="bash">
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
-```
+</instruqt-code>
 
 For this lab, use these values:
 
-```bash
+<instruqt-code language="bash">
 git config --global user.name "Lab Student"
 git config --global user.email "student@instruqt.lab"
-```
+</instruqt-code>
 
 The `--global` flag tells Git to apply these settings to all repositories on your system. Without it, the configuration would only apply to the current repository (which doesn't exist yet).
 
 After setting these values, you can verify they were saved:
 
-```bash
+<instruqt-code language="bash">
 git config --global user.name
 git config --global user.email
-```
+</instruqt-code>
 
 These read commands should echo back the values you just set. Git stores these settings in a plain text file in your home directory (`.gitconfig`), which you can edit manually if needed.
 
@@ -49,23 +49,23 @@ The **local** level (no flag needed) applies only to a single repository. If you
 
 Git uses configuration for more than just identity. Some settings have already been configured for this lab environment. Let's check them:
 
-```bash
+<instruqt-code language="bash">
 git config --global init.defaultBranch
-```
+</instruqt-code>
 
 This shows `main`, the default branch name for new repositories. This is the modern standard (replacing the older `master` terminology). This was pre-configured for you.
 
-```bash
+<instruqt-code language="bash">
 git config --global core.editor
-```
+</instruqt-code>
 
 You'll see `nano`, which Git opens when you need to write commit messages or resolve conflicts. This was also pre-configured, but you could change it to your preferred editor if needed.
 
 Want to see everything Git knows about? Run:
 
-```bash
+<instruqt-code language="bash">
 git config --list
-```
+</instruqt-code>
 
 This dumps all configuration from all three levels. You'll see settings you didn't even know existed - Git has hundreds of options for fine-tuning its behavior.
 

@@ -22,20 +22,20 @@ The staging area lets you:
 
 Let's create multiple files and practice selective staging:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # Create three new files
 echo "def add(a, b): return a + b" > math_utils.py
 echo "import math_utils" > main.py
 echo "*.pyc" > .gitignore
-```
+</instruqt-code>
 
 Check the status:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 You'll see all three files listed as untracked.
 
@@ -43,13 +43,13 @@ You'll see all three files listed as untracked.
 
 Let's stage them one at a time:
 
-```bash
+<instruqt-code language="bash">
 # Stage just the math utilities
 git add math_utils.py
 
 # Check status
 git status
-```
+</instruqt-code>
 
 Notice that `math_utils.py` is now under "Changes to be committed" while the others remain untracked.
 
@@ -57,19 +57,19 @@ Notice that `math_utils.py` is now under "Changes to be committed" while the oth
 
 Stage the remaining files:
 
-```bash
+<instruqt-code language="bash">
 # Stage specific files
 git add main.py .gitignore
 
 # Or stage all at once
 # git add .
-```
+</instruqt-code>
 
 Check status again:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 All files should now be staged.
 
@@ -77,13 +77,13 @@ All files should now be staged.
 
 What if you staged something by mistake? You can unstage it:
 
-```bash
+<instruqt-code language="bash">
 # Unstage a file (keeps your changes in the working directory)
 git reset main.py
 
 # Check status
 git status
-```
+</instruqt-code>
 
 Now `main.py` is back to untracked, but the file itself hasn't changed.
 
@@ -91,19 +91,19 @@ Now `main.py` is back to untracked, but the file itself hasn't changed.
 
 The staging area also works with modifications. Let's modify a committed file:
 
-```bash
+<instruqt-code language="bash">
 # Modify README
 echo "## Features" >> README.md
 
 # Check status
 git status
-```
+</instruqt-code>
 
 You'll see `README.md` listed under "Changes not staged for commit". Even though it's already tracked, modifications must be staged:
 
-```bash
+<instruqt-code language="bash">
 git add README.md
-```
+</instruqt-code>
 
 ## Partial Staging
 

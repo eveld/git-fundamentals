@@ -12,12 +12,12 @@ When working with remotes, you need to synchronize changes from the remote to yo
 1. `git fetch` - Download commits from remote
 2. `git merge` - Merge those commits into your current branch
 
-```bash
+<instruqt-code language="bash">
 git pull origin main
 # Same as:
 # git fetch origin
 # git merge origin/main
-```
+</instruqt-code>
 
 ## Simulating Remote Changes
 
@@ -25,7 +25,7 @@ In a real team, other developers push changes while you work. Let's simulate thi
 
 We'll add a commit to the remote that you don't have locally:
 
-```bash
+<instruqt-code language="bash">
 # Create a temporary clone to simulate another developer
 cd /tmp
 git clone /opt/git/team-project.git temp-clone
@@ -42,7 +42,7 @@ git push origin main
 # Clean up
 cd /root/workspace
 rm -rf /tmp/temp-clone
-```
+</instruqt-code>
 
 Now the remote has commits you don't have locally!
 
@@ -50,7 +50,7 @@ Now the remote has commits you don't have locally!
 
 See if the remote has new commits:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 
 # Fetch information about remote changes (doesn't merge yet)
@@ -58,7 +58,7 @@ git fetch origin
 
 # Compare local and remote branches
 git log main..origin/main --oneline
-```
+</instruqt-code>
 
 If this shows commits, the remote is ahead of your local branch.
 
@@ -66,13 +66,13 @@ If this shows commits, the remote is ahead of your local branch.
 
 Download and integrate the remote changes:
 
-```bash
+<instruqt-code language="bash">
 git pull origin main
-```
+</instruqt-code>
 
 You'll see output like:
 
-```
+<instruqt-code language="text">
 remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0)
@@ -85,7 +85,7 @@ Fast-forward
  remote-feature.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 remote-feature.txt
-```
+</instruqt-code>
 
 ## What Happened?
 
@@ -95,10 +95,10 @@ Fast-forward
 
 Check the new file:
 
-```bash
+<instruqt-code language="bash">
 ls
 cat remote-feature.txt
-```
+</instruqt-code>
 
 The file that was created remotely is now in your working directory!
 
@@ -106,9 +106,9 @@ The file that was created remotely is now in your working directory!
 
 If you're on a tracking branch:
 
-```bash
+<instruqt-code language="bash">
 git pull
-```
+</instruqt-code>
 
 Git knows to pull from the tracked remote branch.
 
@@ -116,43 +116,43 @@ Git knows to pull from the tracked remote branch.
 
 Instead of merging, you can rebase your changes on top of the remote changes:
 
-```bash
+<instruqt-code language="bash">
 git pull --rebase origin main
-```
+</instruqt-code>
 
 This creates a cleaner, linear history. We'll cover rebasing more in advanced labs, but here's the difference:
 
 **Regular pull (merge)**:
-```
+<instruqt-code language="text">
      A---B---C  (your commits)
     /         \
 D---E---F-------M  (merge commit)
         ^
         (remote commits)
-```
+</instruqt-code>
 
 **Pull with rebase**:
-```
+<instruqt-code language="text">
 D---E---F---A'---B'---C'  (your commits replayed on top)
         ^
         (remote commits)
-```
+</instruqt-code>
 
 ## Handling Pull Conflicts
 
 If you and someone else modified the same files, you might get a merge conflict:
 
-```bash
+<instruqt-code language="bash">
 git pull origin main
-```
+</instruqt-code>
 
 If there's a conflict:
 
-```
+<instruqt-code language="text">
 Auto-merging somefile.txt
 CONFLICT (content): Merge conflict in somefile.txt
 Automatic merge failed; fix conflicts and then commit the result.
-```
+</instruqt-code>
 
 Resolve it the same way we learned in the merge conflicts chapter:
 1. Edit the conflicted files
@@ -164,7 +164,7 @@ Resolve it the same way we learned in the merge conflicts chapter:
 
 **git fetch**: Downloads commits but doesn't merge
 
-```bash
+<instruqt-code language="bash">
 # Download remote changes
 git fetch origin
 
@@ -173,14 +173,14 @@ git log main..origin/main --oneline
 
 # Decide to merge manually
 git merge origin/main
-```
+</instruqt-code>
 
 **git pull**: Downloads and merges in one step
 
-```bash
+<instruqt-code language="bash">
 # Download and merge
 git pull origin main
-```
+</instruqt-code>
 
 Use `fetch` when you want to review changes before integrating. Use `pull` when you trust the changes and want to integrate immediately.
 
@@ -188,7 +188,7 @@ Use `fetch` when you want to review changes before integrating. Use `pull` when 
 
 Here's a typical workflow when collaborating:
 
-```bash
+<instruqt-code language="bash">
 # 1. Start work: pull latest changes
 git pull origin main
 
@@ -212,7 +212,7 @@ git push origin main
 
 # 7. Clean up
 git branch -d my-feature
-```
+</instruqt-code>
 
 ## Avoiding Pull Problems
 
@@ -225,14 +225,14 @@ git branch -d my-feature
 
 Check if your branch is ahead or behind:
 
-```bash
+<instruqt-code language="bash">
 # See status
 git status
 
 # See exactly what's different
 git log main..origin/main  # what remote has that you don't
 git log origin/main..main  # what you have that remote doesn't
-```
+</instruqt-code>
 
 ## Task
 

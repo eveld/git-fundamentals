@@ -19,7 +19,7 @@ Only committed changes can be pushed - staged but uncommitted changes stay local
 
 Let's create commits to push:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 
 # Create a new file
@@ -36,25 +36,25 @@ git commit -m "Add project documentation"
 echo "This is my contribution!" > contribution.txt
 git add contribution.txt
 git commit -m "Add my contribution"
-```
+</instruqt-code>
 
 <instruqt-task id="make_changes_for_push"></instruqt-task>
 
 Check the status:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 You'll see something like:
 
-```
+<instruqt-code language="text">
 On branch main
 Your branch is ahead of 'origin/main' by 2 commits.
   (use "git push" to publish your local commits)
 
 nothing to commit, working tree clean
-```
+</instruqt-code>
 
 Git is telling you that you have 2 commits locally that don't exist on the remote yet.
 
@@ -62,9 +62,9 @@ Git is telling you that you have 2 commits locally that don't exist on the remot
 
 Upload your commits:
 
-```bash
+<instruqt-code language="bash">
 git push origin main
-```
+</instruqt-code>
 
 Breaking this down:
 - `git push` - The push command
@@ -73,31 +73,31 @@ Breaking this down:
 
 You'll see output like:
 
-```
+<instruqt-code language="text">
 Counting objects: 6, done.
 Delta compression done.
 Writing objects: 100% (6/6), 523 bytes | 523.00 KiB/s, done.
 Total 6 (delta 0), reused 0 (delta 0)
 To /opt/git/team-project.git
    abc1234..def5678  main -> main
-```
+</instruqt-code>
 
 ## Verifying the Push
 
 Check status again:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 Now you'll see:
 
-```
+<instruqt-code language="text">
 On branch main
 Your branch is up to date with 'origin/main'.
 
 nothing to commit, working tree clean
-```
+</instruqt-code>
 
 Your local branch is now synchronized with the remote!
 
@@ -105,9 +105,9 @@ Your local branch is now synchronized with the remote!
 
 If you're on a tracking branch, you can just use:
 
-```bash
+<instruqt-code language="bash">
 git push
-```
+</instruqt-code>
 
 Git knows to push the current branch to its remote tracking branch. This works because when you clone, Git sets up tracking automatically.
 
@@ -120,15 +120,15 @@ When you clone, your local `main` branch is set to track `origin/main`. This mea
 
 Check tracking information:
 
-```bash
+<instruqt-code language="bash">
 git branch -vv
-```
+</instruqt-code>
 
 You'll see something like:
 
-```
+<instruqt-code language="text">
 * main abc1234 [origin/main] Add my contribution
-```
+</instruqt-code>
 
 The `[origin/main]` part shows that `main` tracks `origin/main`.
 
@@ -138,13 +138,13 @@ What if someone else pushed while you were working? Let's simulate this:
 
 First, let's create a scenario where the remote has changed. For now, just understand that if this happens, you'll see:
 
-```
+<instruqt-code language="text">
 ! [rejected]        main -> main (non-fast-forward)
 error: failed to push some refs to '/opt/git/team-project.git'
 hint: Updates were rejected because the remote contains work that you do not
 hint: have locally. You may want to integrate the remote changes (e.g.,
 hint: 'git pull ...') before pushing again.
-```
+</instruqt-code>
 
 This means someone else pushed commits to the remote that you don't have yet. You need to pull their changes first (we'll cover this next).
 
@@ -152,9 +152,9 @@ This means someone else pushed commits to the remote that you don't have yet. Yo
 
 You can force push with `--force`:
 
-```bash
+<instruqt-code language="bash">
 git push --force origin main
-```
+</instruqt-code>
 
 **WARNING**: This overwrites the remote history with your history. Use this only when you know what you're doing and have coordinated with your team. Force pushing can cause others to lose work!
 
@@ -164,7 +164,7 @@ Common (safe) use case: You pushed something accidentally and want to undo it be
 
 Push a branch that doesn't exist on the remote yet:
 
-```bash
+<instruqt-code language="bash">
 # Create a new branch
 git checkout -b feature/new-feature
 
@@ -175,13 +175,13 @@ git commit -m "Add feature"
 
 # Push the new branch
 git push origin feature/new-feature
-```
+</instruqt-code>
 
 Or use `-u` to set up tracking:
 
-```bash
+<instruqt-code language="bash">
 git push -u origin feature/new-feature
-```
+</instruqt-code>
 
 The `-u` flag (same as `--set-upstream`) creates the tracking relationship, so future `git push` commands know where to push.
 
@@ -189,13 +189,13 @@ The `-u` flag (same as `--set-upstream`) creates the tracking relationship, so f
 
 Before pushing, see what commits will be uploaded:
 
-```bash
+<instruqt-code language="bash">
 # Show commits that will be pushed
 git log origin/main..main --oneline
 
 # Or use the shortcut
 git log @{u}.. --oneline
-```
+</instruqt-code>
 
 This shows commits on `main` that aren't on `origin/main` yet.
 
@@ -203,13 +203,13 @@ This shows commits on `main` that aren't on `origin/main` yet.
 
 Remove a branch from the remote:
 
-```bash
+<instruqt-code language="bash">
 # Delete a remote branch
 git push origin --delete feature/old-feature
 
 # Alternative syntax
 git push origin :feature/old-feature
-```
+</instruqt-code>
 
 ## Best Practices for Pushing
 

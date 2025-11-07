@@ -51,7 +51,7 @@ Let's review everything you've mastered:
 
 Here's a quick reference of commands you've learned:
 
-```bash
+<instruqt-code language="bash">
 # Configuration
 git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
@@ -92,7 +92,7 @@ git show <commit>           # View specific commit
 git log --oneline --graph   # Visual history
 HEAD~1                      # Previous commit
 HEAD~2                      # Two commits back
-```
+</instruqt-code>
 
 ## Next Steps
 

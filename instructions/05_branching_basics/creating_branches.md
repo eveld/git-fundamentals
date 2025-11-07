@@ -20,17 +20,17 @@ Branches are useful for:
 
 See what branches exist:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # List all branches
 git branch
-```
+</instruqt-code>
 
 You should see:
-```
+<instruqt-code language="text">
 * main
-```
+</instruqt-code>
 
 The `*` indicates your current branch.
 
@@ -38,19 +38,19 @@ The `*` indicates your current branch.
 
 Create a branch with `git branch`:
 
-```bash
+<instruqt-code language="bash">
 # Create a new branch called "feature"
 git branch feature
 
 # List branches again
 git branch
-```
+</instruqt-code>
 
 Now you'll see:
-```
+<instruqt-code language="text">
   feature
 * main
-```
+</instruqt-code>
 
 The branch exists, but you're still on `main` (notice where the `*` is).
 
@@ -61,11 +61,11 @@ When you created `feature`, Git:
 2. Made it point to the same commit as `main`
 3. Kept `HEAD` pointing to `main`
 
-```
+<instruqt-code language="text">
 main → commit abc123
 feature → commit abc123
 HEAD → main
-```
+</instruqt-code>
 
 Both branches point to the same commit right now.
 
@@ -93,7 +93,7 @@ Use lowercase and hyphens for readability.
 
 You can create as many branches as you need:
 
-```bash
+<instruqt-code language="bash">
 # Create branches for different features
 git branch feature/api-integration
 git branch fix/typo
@@ -101,28 +101,28 @@ git branch experiment/refactor
 
 # View all branches
 git branch
-```
+</instruqt-code>
 
 ## Viewing Branch Information
 
 Get more details about branches:
 
-```bash
+<instruqt-code language="bash">
 # Show last commit on each branch
 git branch -v
 
 # Show all branches including remote tracking branches
 git branch -a
-```
+</instruqt-code>
 
 ## Where Branches Point
 
 See exactly which commit each branch points to:
 
-```bash
+<instruqt-code language="bash">
 # Show branches with commit hashes
 git log --oneline --all --decorate
-```
+</instruqt-code>
 
 The output shows branch names next to commits, making it easy to see where each branch is.
 

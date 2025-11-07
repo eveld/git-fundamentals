@@ -16,28 +16,28 @@ Let's walk through each step.
 
 First, let's create a file in your repository:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 echo "# My Project" > README.md
-```
+</instruqt-code>
 
 <instruqt-task id="create_readme"></instruqt-task>
 
 Now check the status:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 You'll see:
 
-```
+<instruqt-code language="text">
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         README.md
 
 nothing added to commit but untracked files present (use "git add" to track)
-```
+</instruqt-code>
 
 Git sees the file but isn't tracking it yet.
 
@@ -45,25 +45,25 @@ Git sees the file but isn't tracking it yet.
 
 Staging tells Git which changes you want to include in the next commit:
 
-```bash
+<instruqt-code language="bash">
 git add README.md
-```
+</instruqt-code>
 
 <instruqt-task id="stage_readme"></instruqt-task>
 
 Check the status again:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 Now you'll see:
 
-```
+<instruqt-code language="text">
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
         new file:   README.md
-```
+</instruqt-code>
 
 The file is now **staged** and ready to be committed.
 
@@ -71,17 +71,17 @@ The file is now **staged** and ready to be committed.
 
 Create a commit with a descriptive message:
 
-```bash
+<instruqt-code language="bash">
 git commit -m "Add README file"
-```
+</instruqt-code>
 
 The `-m` flag lets you provide a commit message inline. You should see output like:
 
-```
+<instruqt-code language="text">
 [main (root-commit) a1b2c3d] Add README file
  1 file changed, 1 insertion(+)
  create mode 100644 README.md
-```
+</instruqt-code>
 
 Congratulations! You've made your first commit.
 
@@ -89,9 +89,9 @@ Congratulations! You've made your first commit.
 
 See your commit history:
 
-```bash
+<instruqt-code language="bash">
 git log
-```
+</instruqt-code>
 
 You'll see:
 - Commit hash (unique identifier)
@@ -105,9 +105,9 @@ Press `q` to exit the log viewer.
 
 For a compact view:
 
-```bash
+<instruqt-code language="bash">
 git log --oneline
-```
+</instruqt-code>
 
 This shows just the hash and message on one line.
 

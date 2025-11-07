@@ -6,9 +6,9 @@ You may have heard warnings about "detached HEAD" in Git. It sounds scary, but i
 
 Usually, HEAD points to a branch, which points to a commit:
 
-```
+<instruqt-code language="text">
 HEAD → main → commit abc123
-```
+</instruqt-code>
 
 When you make a new commit, the branch moves forward and HEAD follows along.
 
@@ -16,9 +16,9 @@ When you make a new commit, the branch moves forward and HEAD follows along.
 
 In detached HEAD state, HEAD points directly to a commit instead of a branch:
 
-```
+<instruqt-code language="text">
 HEAD → commit abc123
-```
+</instruqt-code>
 
 This happens when you check out a specific commit rather than a branch.
 
@@ -26,7 +26,7 @@ This happens when you check out a specific commit rather than a branch.
 
 Let's try it safely:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # See your commit history
@@ -34,21 +34,21 @@ git log --oneline
 
 # Check out an older commit (use one of your actual commit hashes)
 git checkout HEAD~2
-```
+</instruqt-code>
 
 You'll see a message like:
 
-```
+<instruqt-code language="text">
 You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by switching back to a branch.
-```
+</instruqt-code>
 
 Check your status:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 It will confirm you're in detached HEAD state.
 
@@ -71,7 +71,7 @@ You can:
 
 This is the safest use - just viewing old code:
 
-```bash
+<instruqt-code language="bash">
 # Check out an old commit
 git checkout HEAD~2
 
@@ -81,7 +81,7 @@ cat README.md
 
 # No changes needed, just go back to main
 git checkout main
-```
+</instruqt-code>
 
 Your files return to their current state. No harm done!
 
@@ -89,7 +89,7 @@ Your files return to their current state. No harm done!
 
 If you make commits while in detached HEAD, those commits aren't on any branch:
 
-```bash
+<instruqt-code language="bash">
 # While in detached HEAD
 echo "experimental" > experiment.txt
 git add experiment.txt
@@ -99,7 +99,7 @@ git commit -m "Experimental commit"
 git checkout main
 
 # ...that commit becomes unreachable (orphaned)
-```
+</instruqt-code>
 
 Git will warn you about this.
 
@@ -109,7 +109,7 @@ If you made commits in detached HEAD and want to keep them:
 
 ### Option 1: Create a Branch
 
-```bash
+<instruqt-code language="bash">
 # While still in detached HEAD, create a branch
 git branch experiment-branch
 
@@ -117,26 +117,26 @@ git branch experiment-branch
 git checkout experiment-branch
 
 # Your commits are safe on this branch
-```
+</instruqt-code>
 
 ### Option 2: Create and Switch in One Command
 
-```bash
+<instruqt-code language="bash">
 # While in detached HEAD
 git checkout -b experiment-branch
-```
+</instruqt-code>
 
 ## Getting Out of Detached HEAD
 
 Simple - just check out a branch:
 
-```bash
+<instruqt-code language="bash">
 # Return to main branch
 git checkout main
 
 # Or any other branch
 git checkout feature-x
-```
+</instruqt-code>
 
 ## When Is Detached HEAD Useful?
 
@@ -147,7 +147,7 @@ git checkout feature-x
 
 ## Practical Example
 
-```bash
+<instruqt-code language="bash">
 # Suppose you want to see when a bug was introduced
 
 # View commit history
@@ -167,7 +167,7 @@ python my_script.py
 
 # When done investigating
 git checkout main
-```
+</instruqt-code>
 
 ## Avoiding Detached HEAD
 
@@ -180,13 +180,13 @@ To avoid accidental detached HEAD:
 
 Modern Git (2.23+) has clearer commands:
 
-```bash
+<instruqt-code language="bash">
 # Switch branches (won't detach)
 git switch main
 
 # View old commit without detaching
 git switch --detach HEAD~3
-```
+</instruqt-code>
 
 The `--detach` flag makes it explicit.
 

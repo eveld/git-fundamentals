@@ -12,20 +12,20 @@ A fast-forward merge happens when the branch you're merging has commits that are
 
 Here's the scenario:
 
-```
+<instruqt-code language="text">
 main:    A → B
               ↓
 feature:      B → C → D
-```
+</instruqt-code>
 
 Main is at commit B, and feature has commits C and D that come after B. There's a direct line from B to D.
 
 When you merge feature into main, Git can simply move the main pointer forward to D:
 
-```
+<instruqt-code language="text">
 main:    A → B → C → D
 feature:         ↑
-```
+</instruqt-code>
 
 This is called a "fast-forward" because Git just moves the pointer forward - no new commit is created.
 
@@ -33,7 +33,7 @@ This is called a "fast-forward" because Git just moves the pointer forward - no 
 
 First, make sure you have a feature branch with commits:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # Create and switch to a new branch
@@ -48,48 +48,48 @@ git commit -m "Add new feature"
 echo "More feature code" >> feature.py
 git add feature.py
 git commit -m "Extend feature"
-```
+</instruqt-code>
 
 <instruqt-task id="commits_on_branch"></instruqt-task>
 
 Check the log:
 
-```bash
+<instruqt-code language="bash">
 git log --oneline --graph --all
-```
+</instruqt-code>
 
 You'll see feature is ahead of main:
 
-```
+<instruqt-code language="text">
 * 3456789 (HEAD -> feature) Extend feature
 * 2345678 Add new feature
 * 1234567 (main) Previous commit
-```
+</instruqt-code>
 
 ## Performing the Merge
 
 Switch back to main and merge:
 
-```bash
+<instruqt-code language="bash">
 # Switch to main
 git checkout main
-```
+</instruqt-code>
 
 <instruqt-task id="switch_to_main"></instruqt-task>
 
-```bash
+<instruqt-code language="bash">
 # Merge feature branch
 git merge feature
-```
+</instruqt-code>
 
 You'll see output like:
 
-```
+<instruqt-code language="text">
 Updating 1234567..3456789
 Fast-forward
  feature.py | 2 ++
  1 file changed, 2 insertions(+)
-```
+</instruqt-code>
 
 Notice the "Fast-forward" message - that's the key indicator.
 
@@ -97,17 +97,17 @@ Notice the "Fast-forward" message - that's the key indicator.
 
 Check the log again:
 
-```bash
+<instruqt-code language="bash">
 git log --oneline --graph --all
-```
+</instruqt-code>
 
 Now you'll see:
 
-```
+<instruqt-code language="text">
 * 3456789 (HEAD -> main, feature) Extend feature
 * 2345678 Add new feature
 * 1234567 Previous commit
-```
+</instruqt-code>
 
 Both `main` and `feature` point to the same commit. Git simply moved the `main` pointer forward.
 
@@ -124,13 +124,13 @@ This is common when you're the only person working on the code, or when working 
 
 After merging, you typically don't need the feature branch anymore:
 
-```bash
+<instruqt-code language="bash">
 # Delete the feature branch
 git branch -d feature
 
 # Verify it's gone
 git branch
-```
+</instruqt-code>
 
 The `-d` flag safely deletes a branch (Git prevents deletion if the branch isn't fully merged).
 
@@ -138,10 +138,10 @@ The `-d` flag safely deletes a branch (Git prevents deletion if the branch isn't
 
 Sometimes you want to preserve the branch history. You can force Git to create a merge commit:
 
-```bash
+<instruqt-code language="bash">
 # Merge without fast-forward
 git merge --no-ff feature
-```
+</instruqt-code>
 
 This creates a merge commit even when a fast-forward is possible. This is more common in team environments where you want to see that a feature branch existed.
 
@@ -149,7 +149,7 @@ This creates a merge commit even when a fast-forward is possible. This is more c
 
 Here's the complete workflow:
 
-```bash
+<instruqt-code language="bash">
 # 1. Create a feature branch
 git checkout -b new-feature
 
@@ -166,19 +166,19 @@ git merge new-feature
 
 # 5. Delete the feature branch
 git branch -d new-feature
-```
+</instruqt-code>
 
 ## Checking Merge Status
 
 Before merging, you can check if a fast-forward is possible:
 
-```bash
+<instruqt-code language="bash">
 # See what would be merged
 git log main..feature --oneline
 
 # See if branches have diverged
 git log --oneline --graph main feature
-```
+</instruqt-code>
 
 ## Task
 

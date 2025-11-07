@@ -8,12 +8,12 @@ Git provides special notation for referring to commits relative to other commits
 
 Check where HEAD points:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # Show current commit
 git log --oneline -1
-```
+</instruqt-code>
 
 The commit shown is where HEAD is pointing.
 
@@ -42,7 +42,7 @@ For now, `~` and `^` are mostly interchangeable since we haven't worked with mer
 
 Show details about earlier commits:
 
-```bash
+<instruqt-code language="bash">
 # Show commit before HEAD
 git show HEAD~1
 
@@ -51,13 +51,13 @@ git show HEAD~2
 
 # Just show the message
 git log --oneline -1 HEAD~1
-```
+</instruqt-code>
 
 ## Comparing Commits
 
 See what changed between commits:
 
-```bash
+<instruqt-code language="bash">
 # Changes between HEAD and previous commit
 git diff HEAD~1
 
@@ -66,26 +66,26 @@ git diff HEAD~3 HEAD~1
 
 # Changes in the last commit
 git diff HEAD~1 HEAD
-```
+</instruqt-code>
 
 Or use the shorthand:
 
-```bash
+<instruqt-code language="bash">
 # Same as: git diff HEAD~1 HEAD
 git diff HEAD~1..HEAD
-```
+</instruqt-code>
 
 ## Using Commit Hashes
 
 You can also reference commits by their hash:
 
-```bash
+<instruqt-code language="bash">
 # Show any commit by hash
 git show a1b2c3d
 
 # Only need enough characters to be unique (usually 7)
 git show a1b2c3d
-```
+</instruqt-code>
 
 Get the hash from `git log --oneline`.
 
@@ -93,13 +93,13 @@ Get the hash from `git log --oneline`.
 
 You can view your files as they were at any commit:
 
-```bash
+<instruqt-code language="bash">
 # View file as it was 3 commits ago
 git show HEAD~3:README.md
 
 # View file from specific commit
 git show a1b2c3d:README.md
-```
+</instruqt-code>
 
 This doesn't change your files, just shows their past content.
 
@@ -107,17 +107,17 @@ This doesn't change your files, just shows their past content.
 
 You can reference the tip of any branch:
 
-```bash
+<instruqt-code language="bash">
 # Show latest commit on main
 git show main
 
 # Show previous commit on main
 git show main~1
-```
+</instruqt-code>
 
 ## Practical Examples
 
-```bash
+<instruqt-code language="bash">
 # What did I change in my last commit?
 git diff HEAD~1 HEAD
 
@@ -129,15 +129,15 @@ git show HEAD~2:hello.py
 
 # Compare current version to 5 commits ago
 git diff HEAD~5 hello.py
-```
+</instruqt-code>
 
 ## The Reflog
 
 Git keeps a log of where HEAD has been:
 
-```bash
+<instruqt-code language="bash">
 git reflog
-```
+</instruqt-code>
 
 This shows every place HEAD has pointed, even if commits aren't in the current branch history. It's useful for recovering "lost" commits (we'll cover this more in advanced topics).
 

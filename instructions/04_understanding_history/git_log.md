@@ -6,10 +6,10 @@ The `git log` command is your window into your project's history. It offers many
 
 You've already seen the basic format:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 git log
-```
+</instruqt-code>
 
 This shows:
 - Full commit hash (40 characters)
@@ -21,9 +21,9 @@ This shows:
 
 For a cleaner overview, use `--oneline`:
 
-```bash
+<instruqt-code language="bash">
 git log --oneline
-```
+</instruqt-code>
 
 This shows just the abbreviated hash (7 chars) and the first line of the commit message.
 
@@ -31,25 +31,25 @@ This shows just the abbreviated hash (7 chars) and the first line of the commit 
 
 View only recent commits:
 
-```bash
+<instruqt-code language="bash">
 # Show last 3 commits
 git log -3
 
 # Or with oneline format
 git log --oneline -5
-```
+</instruqt-code>
 
 ## Showing Diffs
 
 See what actually changed in each commit:
 
-```bash
+<instruqt-code language="bash">
 # Show patch (diff) for each commit
 git log -p
 
 # Combine with limiting
 git log -p -2
-```
+</instruqt-code>
 
 Press `q` to exit the pager.
 
@@ -57,21 +57,21 @@ Press `q` to exit the pager.
 
 Get a statistical summary of changes:
 
-```bash
+<instruqt-code language="bash">
 # Show files changed and line counts
 git log --stat
 
 # Show abbreviated stats
 git log --shortstat
-```
+</instruqt-code>
 
 ## Graphical View
 
 Visualize branch structure (especially useful later when working with branches):
 
-```bash
+<instruqt-code language="bash">
 git log --oneline --graph --all
-```
+</instruqt-code>
 
 The `--graph` flag draws ASCII art showing branch relationships.
 
@@ -79,13 +79,13 @@ The `--graph` flag draws ASCII art showing branch relationships.
 
 Format output exactly how you want:
 
-```bash
+<instruqt-code language="bash">
 # Custom format: hash, date, message
 git log --pretty=format:"%h - %ar: %s"
 
 # With author
 git log --pretty=format:"%h - %an, %ar: %s"
-```
+</instruqt-code>
 
 Format placeholders:
 - `%h` - Abbreviated hash
@@ -99,7 +99,7 @@ Format placeholders:
 
 View commits from a specific time range:
 
-```bash
+<instruqt-code language="bash">
 # Commits from last 2 days
 git log --since="2 days ago"
 
@@ -108,43 +108,43 @@ git log --until="2024-11-01"
 
 # Between dates
 git log --since="2024-10-01" --until="2024-11-01"
-```
+</instruqt-code>
 
 ## Filtering by Author
 
 See commits by a specific person:
 
-```bash
+<instruqt-code language="bash">
 # Filter by author
 git log --author="Lab Student"
 
 # Can use partial matches
 git log --author="Student"
-```
+</instruqt-code>
 
 ## Searching Commit Messages
 
 Find commits mentioning specific words:
 
-```bash
+<instruqt-code language="bash">
 # Search for commits with "README" in message
 git log --grep="README"
 
 # Case-insensitive search
 git log --grep="readme" -i
-```
+</instruqt-code>
 
 ## Searching Code Changes
 
 Find commits that added or removed specific text:
 
-```bash
+<instruqt-code language="bash">
 # Find commits that changed occurrences of "function"
 git log -S "function"
 
 # More details with patch
 git log -S "function" -p
-```
+</instruqt-code>
 
 This is called "pickaxe" search and is useful for tracking when code was added or removed.
 
@@ -152,17 +152,17 @@ This is called "pickaxe" search and is useful for tracking when code was added o
 
 You can combine multiple options:
 
-```bash
+<instruqt-code language="bash">
 # Last 5 commits, oneline format, with graph
 git log --oneline --graph -5
 
 # Last 10 commits with stats, from last week
 git log --stat -10 --since="1 week ago"
-```
+</instruqt-code>
 
 ## Practical Examples
 
-```bash
+<instruqt-code language="bash">
 # Quick overview of recent work
 git log --oneline -10
 
@@ -174,7 +174,7 @@ git log --since="1 week ago" --pretty=format:"%an: %s"
 
 # Find all commits about tests
 git log --grep="test" --oneline
-```
+</instruqt-code>
 
 ## Key Points
 

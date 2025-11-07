@@ -17,13 +17,13 @@ Let's simulate two developers (you and a teammate) working on the same project. 
 
 ## Setup: Two Work Areas
 
-```bash
+<instruqt-code language="bash">
 # You already have one clone in /root/workspace/team-project
 # Let's create a second one representing your teammate
 
 cd /root/workspace
 git clone /opt/git/team-project.git teammate-workspace
-```
+</instruqt-code>
 
 Now you have:
 - `/root/workspace/team-project` - Your workspace
@@ -35,7 +35,7 @@ Both connect to the same remote: `/opt/git/team-project.git`
 
 **You make changes:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 
 # Create a feature file
@@ -45,11 +45,11 @@ git commit -m "Add authentication skeleton"
 
 # Push to remote
 git push origin main
-```
+</instruqt-code>
 
 **Your teammate pulls and builds on your work:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/teammate-workspace
 
 # Get your changes
@@ -66,11 +66,11 @@ git commit -m "Add logout function"
 
 # Push to remote
 git push origin main
-```
+</instruqt-code>
 
 **You pull their changes:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 
 # Get their changes
@@ -78,7 +78,7 @@ git pull origin main
 
 # See the combined work
 cat auth.js
-```
+</instruqt-code>
 
 Both functions are now in the file! This is the basic collaboration flow.
 
@@ -86,29 +86,29 @@ Both functions are now in the file! This is the basic collaboration flow.
 
 **You both start from the same point:**
 
-```bash
+<instruqt-code language="bash">
 # Make sure both workspaces are synchronized
 cd /root/workspace/team-project
 git pull origin main
 
 cd /root/workspace/teammate-workspace
 git pull origin main
-```
+</instruqt-code>
 
 **You work on file A:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 
 echo "User documentation" > USERS.md
 git add USERS.md
 git commit -m "Add user documentation"
 git push origin main
-```
+</instruqt-code>
 
 **Teammate works on file B (before pulling your changes):**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/teammate-workspace
 
 echo "Developer documentation" > DEVELOPERS.md
@@ -117,54 +117,54 @@ git commit -m "Add developer documentation"
 
 # Try to push
 git push origin main
-```
+</instruqt-code>
 
 **The push is rejected!**
 
-```
+<instruqt-code language="text">
 ! [rejected]        main -> main (fetch first)
 error: failed to push some refs
 hint: Updates were rejected because the remote contains work...
-```
+</instruqt-code>
 
 **Teammate pulls first:**
 
-```bash
+<instruqt-code language="bash">
 git pull origin main
-```
+</instruqt-code>
 
 Git automatically merges! Since you touched different files, there's no conflict.
 
-```bash
+<instruqt-code language="bash">
 # Now push succeeds
 git push origin main
-```
+</instruqt-code>
 
 **You pull the merged result:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 git pull origin main
 
 # Both files are here
 ls
-```
+</instruqt-code>
 
 ## Scenario 3: Parallel Work (With Conflicts)
 
 **Both start synchronized again:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 git pull origin main
 
 cd /root/workspace/teammate-workspace
 git pull origin main
-```
+</instruqt-code>
 
 **You modify README:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 
 echo "Project: Team Collaboration Tool" > README.md
@@ -172,11 +172,11 @@ echo "Status: In Development" >> README.md
 git add README.md
 git commit -m "Update project status"
 git push origin main
-```
+</instruqt-code>
 
 **Teammate also modifies README (different changes):**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/teammate-workspace
 
 echo "Project: Collaboration Suite" > README.md
@@ -190,19 +190,19 @@ git push origin main
 
 # Pull first
 git pull origin main
-```
+</instruqt-code>
 
 **Conflict! Both modified README.md:**
 
-```
+<instruqt-code language="text">
 Auto-merging README.md
 CONFLICT (content): Merge conflict in README.md
 Automatic merge failed; fix conflicts and then commit the result.
-```
+</instruqt-code>
 
 **Teammate resolves:**
 
-```bash
+<instruqt-code language="bash">
 # View the conflict
 cat README.md
 
@@ -215,24 +215,24 @@ EOF
 git add README.md
 git commit -m "Merge changes to README"
 git push origin main
-```
+</instruqt-code>
 
 **You pull the resolved version:**
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/team-project
 git pull origin main
 cat README.md
-```
+</instruqt-code>
 
 ## Best Practices for Team Collaboration
 
 ### 1. Pull Before You Start Working
 
-```bash
+<instruqt-code language="bash">
 # Start each work session with a pull
 git pull origin main
-```
+</instruqt-code>
 
 This minimizes conflicts by keeping your local copy current.
 
@@ -240,7 +240,7 @@ This minimizes conflicts by keeping your local copy current.
 
 Small, focused commits are easier to merge:
 
-```bash
+<instruqt-code language="bash">
 # Good: Small, focused commits
 git commit -m "Add login function"
 git commit -m "Add logout function"
@@ -248,31 +248,31 @@ git commit -m "Add password validation"
 
 # Less good: One huge commit
 git commit -m "Add entire authentication system"
-```
+</instruqt-code>
 
 ### 3. Push Regularly
 
 Don't hoard commits locally:
 
-```bash
+<instruqt-code language="bash">
 # Push when you've completed a logical unit of work
 git push origin main
-```
+</instruqt-code>
 
 ### 4. Communicate
 
 Use commit messages to communicate intent:
 
-```bash
+<instruqt-code language="bash">
 # Clear messages help teammates understand your work
 git commit -m "Fix memory leak in user session handler"
-```
+</instruqt-code>
 
 ### 5. Use Branches for Features
 
 Work on branches to avoid blocking others:
 
-```bash
+<instruqt-code language="bash">
 # Create a feature branch
 git checkout -b feature/new-auth
 
@@ -288,13 +288,13 @@ git push -u origin feature/new-auth
 git checkout main
 git merge feature/new-auth
 git push origin main
-```
+</instruqt-code>
 
 ## The Golden Rule
 
 **Always pull before you push!**
 
-```bash
+<instruqt-code language="bash">
 # The safe workflow
 git pull origin main   # Get latest changes
 # ... make your changes ...
@@ -302,13 +302,13 @@ git add .
 git commit -m "Your changes"
 git pull origin main   # Pull again in case someone pushed while you worked
 git push origin main   # Now push
-```
+</instruqt-code>
 
 ## Handling Race Conditions
 
 Sometimes you and a teammate push at nearly the same time:
 
-```bash
+<instruqt-code language="bash">
 # You try to push
 git push origin main
 
@@ -321,7 +321,7 @@ git pull origin main
 git push origin main
 
 # If conflicts, resolve them first
-```
+</instruqt-code>
 
 ## Real-World Team Workflow Summary
 

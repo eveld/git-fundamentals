@@ -6,10 +6,10 @@ Let's solidify your understanding of Git's core workflow: **Modify → Stage →
 
 Every change you make follows this pattern:
 
-```
+<instruqt-code language="text">
 Working Directory  →  Staging Area  →  Repository
     (edit)              (git add)       (git commit)
-```
+</instruqt-code>
 
 Let's walk through a complete workflow.
 
@@ -17,7 +17,7 @@ Let's walk through a complete workflow.
 
 Make changes in your working directory:
 
-```bash
+<instruqt-code language="bash">
 cd /root/workspace/my-project
 
 # Modify an existing file
@@ -27,13 +27,13 @@ echo "- Master the commit workflow" >> README.md
 
 # Create a new file
 echo "TODO: Add tests" > TODO.txt
-```
+</instruqt-code>
 
 Check what changed:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 You'll see:
 - `README.md` listed as modified
@@ -41,10 +41,10 @@ You'll see:
 
 View the specific changes:
 
-```bash
+<instruqt-code language="bash">
 # See what changed in modified files
 git diff
-```
+</instruqt-code>
 
 This shows the exact lines added or removed. Press `q` to exit.
 
@@ -52,27 +52,27 @@ This shows the exact lines added or removed. Press `q` to exit.
 
 Select which changes to include in your next commit:
 
-```bash
+<instruqt-code language="bash">
 # Stage both files
 git add README.md TODO.txt
 
 # Or stage everything
 # git add .
-```
+</instruqt-code>
 
 Check status again:
 
-```bash
+<instruqt-code language="bash">
 git status
-```
+</instruqt-code>
 
 Now both files appear under "Changes to be committed".
 
 To see what's staged:
 
-```bash
+<instruqt-code language="bash">
 git diff --staged
-```
+</instruqt-code>
 
 This shows the changes that will be included in the next commit.
 
@@ -80,15 +80,15 @@ This shows the changes that will be included in the next commit.
 
 Create a snapshot with a descriptive message:
 
-```bash
+<instruqt-code language="bash">
 git commit -m "Add project goals and TODO list"
-```
+</instruqt-code>
 
 Verify the commit was created:
 
-```bash
+<instruqt-code language="bash">
 git log --oneline
-```
+</instruqt-code>
 
 ## Writing Good Commit Messages
 
@@ -111,7 +111,7 @@ A good commit message:
 
 Let's do one more complete cycle:
 
-```bash
+<instruqt-code language="bash">
 # 1. MODIFY
 echo "def multiply(a, b): return a * b" >> math_utils.py
 
@@ -130,19 +130,19 @@ git commit -m "Add multiply function to math_utils"
 
 # Verify
 git log --oneline -3
-```
+</instruqt-code>
 
 ## Skipping the Staging Area
 
 For tracked files, you can skip staging with the `-a` flag:
 
-```bash
+<instruqt-code language="bash">
 # Make a change
 echo "# Notes" >> README.md
 
 # Commit directly (stages all modified tracked files automatically)
 git commit -a -m "Add notes section to README"
-```
+</instruqt-code>
 
 **Caution:** This only works for *modified* files that are already tracked. New files must still be staged explicitly.
 
