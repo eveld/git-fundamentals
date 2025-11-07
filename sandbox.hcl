@@ -10,18 +10,23 @@ resource "container" "git_workstation" {
   network {
     id = resource.network.main.meta.id
   }
+
+  volume {
+    source = "scripts/setup"
+    destination = "/tmp/setup"
+  }
 }
 
 resource "exec" "setup_environment" {
   target = resource.container.git_workstation
 
-  script = "scripts/setup/install_packages.sh"
+  script = "/tmp/setup/install_packages.sh"
 }
 
 resource "exec" "configure_git" {
   target = resource.container.git_workstation
 
-  script = "scripts/setup/configure_git.sh"
+  script = "/tmp/setup/configure_git.sh"
 
   depends_on = ["resource.exec.setup_environment"]
 }
