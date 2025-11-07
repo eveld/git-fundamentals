@@ -1,18 +1,18 @@
 # Git Configuration
 
-Before using Git, you need to tell it who you are. This information is attached to every commit you make.
+Every commit you make in Git includes metadata: who made it, when it was made, and what changed. Git needs to know your identity so it can record this information. When you're working with others, this attribution becomes crucial - it's how teams track who contributed what, who to ask about specific changes, and how to give credit for work.
 
-## Your Identity
+## Why Git Needs Your Identity
 
-Your Git identity has two parts:
-- **Name**: Your name (or username)
-- **Email**: Your email address
+Imagine looking at a project's history and seeing commits from "Unknown User" with no way to contact that person. When a bug appears in code they wrote, or when you need to understand why they made a particular decision, you're stuck. Your name and email solve this problem. They're permanently embedded in every commit you create, creating an auditable trail of who did what.
 
-## Checking Current Configuration
+Your Git identity has two parts: a name (how you want to be known in commit history) and an email address (how others can reach you). These aren't just labels - they're used by Git hosting platforms like GitHub to link commits to user accounts, calculate contribution statistics, and enable collaboration features.
 
-Your Git identity has already been pre-configured for this lab, but let's verify it.
+## Checking Your Configuration
 
-Run this command to see your configured name:
+Your identity has been pre-configured for this lab, but let's verify it to understand how Git stores this information.
+
+See your configured name:
 
 ```bash
 git config --global user.name
@@ -20,7 +20,7 @@ git config --global user.name
 
 You should see: `Lab Student`
 
-Now check your email:
+Check your email:
 
 ```bash
 git config --global user.email
@@ -28,39 +28,41 @@ git config --global user.email
 
 You should see: `student@instruqt.lab`
 
-## How Configuration Works
+These commands read from Git's configuration system, which stores settings in plain text files on your computer.
 
-Git has three levels of configuration:
+## Understanding Configuration Levels
 
-1. **System** (`--system`): Applies to all users on the system
-2. **Global** (`--global`): Applies to your user account
-3. **Local** (default): Applies only to the current repository
+Git's configuration system has three levels, each serving a different scope. Think of them as layers of specificity: broad settings that apply everywhere, personal preferences for your account, and project-specific overrides.
 
-The `--global` flag means these settings apply to all repositories for your user.
+The **system** level (`--system`) configures Git for every user on the machine. On a shared server, an administrator might use this to set organization-wide defaults. Most developers never touch this level.
 
-## Other Useful Settings
+The **global** level (`--global`) is where your personal preferences live. Settings here apply to all repositories you work on with your user account. This is where you configure your identity, preferred editor, and personal workflows. When you run `git config --global`, Git writes to a file in your home directory.
 
-Let's check a few other pre-configured settings:
+The **local** level (no flag needed) applies only to a single repository. If you contribute to an open-source project using a different email than your work projects, you'd set that at the local level. Local settings override global ones, which override system ones.
+
+## Other Configuration
+
+Git uses configuration for more than just identity. Let's check a couple of other settings that affect how you'll use Git:
 
 ```bash
-# Default branch name
 git config --global init.defaultBranch
+```
 
-# Default text editor
+This shows `main`, the default branch name for new repositories. This is the modern standard (replacing the older `master` terminology).
+
+```bash
 git config --global core.editor
 ```
 
-The default branch is set to `main` (the modern standard), and the editor is `nano` (a beginner-friendly terminal editor).
+You'll see `nano`, which Git opens when you need to write commit messages or resolve conflicts. You can change this to your preferred editor.
 
-## Viewing All Configuration
-
-To see all your Git configuration at once:
+Want to see everything Git knows about? Run:
 
 ```bash
 git config --list
 ```
 
-This shows every setting Git knows about.
+This dumps all configuration from all three levels. You'll see settings you didn't even know existed - Git has hundreds of options for fine-tuning its behavior.
 
 ## Task
 

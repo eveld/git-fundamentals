@@ -263,11 +263,109 @@ Chapter 7 (later):
 "Your commits haven't reached the remote yet. What command sends local commits to origin?"
 ```
 
+## Narrative vs. Bullet Points
+
+**Avoid bullet-point overload.** While bullet points have their place, overusing them makes content feel mechanical and disconnected. Good lab content balances narrative explanation with structured information.
+
+### When to Use Narrative
+
+Use narrative (paragraph) style when:
+- Explaining WHY something matters
+- Providing context or motivation
+- Telling a story about how something works
+- Connecting concepts to real-world scenarios
+
+### When to Use Bullet Points
+
+Use bullet points for:
+- Lists of discrete items (commands, options, features)
+- Step-by-step procedures
+- Quick reference information
+
+### Example: Before and After
+
+❌ **Too mechanical (all bullets):**
+```markdown
+## Git Configuration
+
+- Git needs your identity
+- Two parts: name and email
+- Attached to every commit
+
+Configuration levels:
+- System: all users
+- Global: your account
+- Local: one repository
+```
+
+✅ **Better (narrative with purpose):**
+```markdown
+## Git Configuration
+
+Every commit you make includes metadata: who made it, when, and what changed.
+Git needs your identity so it can record this information. When you're working
+with others, this attribution becomes crucial - it's how teams track who
+contributed what and who to ask about specific changes.
+
+Your Git identity has two parts: a name (how you want to be known) and an
+email address (how others can reach you). These aren't just labels - they're
+used by platforms like GitHub to link commits to accounts and enable
+collaboration features.
+```
+
+The narrative version:
+- Explains WHY (attribution, collaboration, accountability)
+- Provides real-world context (teams, bug tracking, GitHub)
+- Flows naturally rather than feeling like a checklist
+- Still remains concise (not verbose)
+
+## Answer the "Why" Questions
+
+Every page should answer natural questions users have:
+
+- **"Why do I need this?"** - What problem does it solve?
+- **"When would I use this?"** - Real-world scenarios
+- **"What happens if I don't?"** - Consequences of skipping it
+- **"How does this connect to what I learned?"** - Building context
+
+### Example: Configuration Levels
+
+❌ **Just facts:**
+```markdown
+Git has three configuration levels:
+1. System - all users
+2. Global - your account
+3. Local - current repository
+```
+
+✅ **With context:**
+```markdown
+Git's configuration system has three levels, each serving a different scope.
+Think of them as layers of specificity: broad settings that apply everywhere,
+personal preferences for your account, and project-specific overrides.
+
+The **system** level configures Git for every user on the machine. On a shared
+server, an administrator might use this to set organization-wide defaults. Most
+developers never touch this level.
+
+The **global** level is where your personal preferences live. This is where you
+configure your identity, preferred editor, and workflows.
+
+The **local** level applies only to a single repository. If you contribute to an
+open-source project using a different email than your work projects, you'd set
+that at the local level. Local settings override global ones.
+```
+
+The contextual version answers:
+- **Why three levels?** Different scopes for different needs
+- **When would I use each?** Concrete examples (shared server, personal work, specific projects)
+- **How do they relate?** Override hierarchy explained
+
 ## Technical Terminology
 
 Introduce terms properly, then use them consistently:
 
-1. **First mention**: Explain in plain language
+1. **First mention**: Explain in plain language with context
 2. **Subsequent use**: Use the technical term
 3. **Condition descriptions**: Use proper terminology (users should learn it)
 
@@ -277,6 +375,12 @@ Introduce terms properly, then use them consistently:
 
 Before you can commit changes, you need to **stage** them. The staging area
 (also called the "index") is like a preparation area for your next commit.
+Think of it as a draft: you can add changes, review them, and adjust before
+making them permanent.
+
+Why have this extra step? It gives you control. You might change five files
+but only want to commit three related ones. The staging area lets you be
+selective about what goes into each commit.
 
 ## Task
 
@@ -319,6 +423,10 @@ When creating lab content, ask yourself:
 - [ ] Have I removed redundant navigation ("Next:" sections)?
 - [ ] Are technical terms introduced before being used?
 - [ ] Is the content educational, not just validating?
+- [ ] Does the content answer WHY, not just WHAT and HOW?
+- [ ] Is there a balance between narrative and structured information?
+- [ ] Are bullet points used sparingly, only where appropriate?
+- [ ] Does each concept include real-world context or examples?
 
 ## The Golden Rule
 
