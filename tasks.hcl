@@ -6,13 +6,17 @@ resource "task" "git_configured" {
     target = resource.container.git_workstation
   }
 
-  condition "git_configured" {
-    description = "Git is properly configured"
+  condition "name_configured" {
+    description = "Git user name is configured"
 
     check {
       script = "scripts/git_configured/check_name.sh"
       failure_message = "Git user name is not configured. Have you set your user.name?"
     }
+  }
+
+  condition "email_configured" {
+    description = "Git user email is configured"
 
     check {
       script = "scripts/git_configured/check_email.sh"
@@ -29,13 +33,17 @@ resource "task" "repo_initialized" {
     target = resource.container.git_workstation
   }
 
-  condition "repository_initialized" {
-    description = "Repository has been initialized"
+  condition "directory_exists" {
+    description = "Project directory exists"
 
     check {
       script = "scripts/repo_initialized/check_directory.sh"
       failure_message = "The my-project directory doesn't exist yet. Did you create it?"
     }
+  }
+
+  condition "git_initialized" {
+    description = "Git repository has been initialized"
 
     check {
       script = "scripts/repo_initialized/check_git_init.sh"
@@ -128,18 +136,26 @@ resource "task" "gitignore_working" {
     target = resource.container.git_workstation
   }
 
-  condition "gitignore_working" {
-    description = ".gitignore is working"
+  condition "gitignore_exists" {
+    description = ".gitignore file exists"
 
     check {
       script = "scripts/gitignore_working/check_exists.sh"
       failure_message = "No .gitignore file found. Have you created one?"
     }
+  }
+
+  condition "gitignore_has_content" {
+    description = ".gitignore file has patterns"
 
     check {
       script = "scripts/gitignore_working/check_content.sh"
       failure_message = "The .gitignore file is empty. What patterns do you want to ignore?"
     }
+  }
+
+  condition "gitignore_committed" {
+    description = ".gitignore file is committed"
 
     check {
       script = "scripts/gitignore_working/check_committed.sh"
@@ -228,13 +244,17 @@ resource "task" "conflict_resolved" {
     target = resource.container.git_workstation
   }
 
-  condition "conflict_resolved" {
-    description = "Merge conflict has been resolved"
+  condition "merge_completed" {
+    description = "Merge is no longer in progress"
 
     check {
       script = "scripts/conflict_resolved/check_no_merge.sh"
       failure_message = "The merge is still in progress. Have you staged the resolved files and completed the merge?"
     }
+  }
+
+  condition "no_conflict_markers" {
+    description = "Conflict markers have been removed"
 
     check {
       script = "scripts/conflict_resolved/check_no_markers.sh"
@@ -251,18 +271,26 @@ resource "task" "remote_cloned" {
     target = resource.container.git_workstation
   }
 
-  condition "repository_cloned" {
-    description = "Repository has been cloned from remote"
+  condition "clone_directory_exists" {
+    description = "Cloned directory exists"
 
     check {
       script = "scripts/remote_cloned/check_directory.sh"
       failure_message = "The team-project directory doesn't exist. Have you cloned the repository?"
     }
+  }
+
+  condition "clone_is_git_repo" {
+    description = "Cloned directory is a Git repository"
 
     check {
       script = "scripts/remote_cloned/check_git_repo.sh"
       failure_message = "The team-project directory exists but isn't a Git repository. Did you use the clone command?"
     }
+  }
+
+  condition "origin_configured" {
+    description = "Origin remote is configured"
 
     check {
       script = "scripts/remote_cloned/check_origin.sh"
