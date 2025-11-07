@@ -1,9 +1,7 @@
 #!/bin/bash
 set -e
 
-# Configure Git identity (pre-configured for students)
-git config --global user.name "Lab Student"
-git config --global user.email "student@instruqt.lab"
+# Set system-wide defaults (NOT user identity - users will configure that themselves)
 git config --global init.defaultBranch main
 git config --global core.editor "nano"
 
@@ -21,9 +19,12 @@ cd /opt/git/team-project.git
 git init --bare --quiet
 
 # Initialize with a README so students have something to clone
+# Use local config here (not global) so students still need to configure their identity
 mkdir -p /tmp/init-repo
 cd /tmp/init-repo
 git init --quiet
+git config user.name "System Setup"
+git config user.email "setup@instruqt.lab"
 echo "# Team Project" > README.md
 echo "Welcome to the team project repository!" >> README.md
 git add README.md
