@@ -60,8 +60,8 @@ resource "task" "create_readme" {
     target = resource.container.git_workstation
   }
 
-  condition "readme_created" {
-    description = "README.md file has been created"
+  condition "readme_exists" {
+    description = "README.md file exists in the working directory"
 
     check {
       script = "scripts/create_readme/check_file_exists.sh"
@@ -79,7 +79,7 @@ resource "task" "stage_readme" {
   }
 
   condition "readme_staged" {
-    description = "README.md is staged for commit"
+    description = "README.md is in the staging area"
 
     check {
       script = "scripts/stage_readme/check_staged.sh"
@@ -96,8 +96,8 @@ resource "task" "first_commit" {
     target = resource.container.git_workstation
   }
 
-  condition "first_commit_made" {
-    description = "First commit has been made"
+  condition "commit_exists" {
+    description = "At least one commit exists in the repository"
 
     check {
       script = "scripts/first_commit/check_commit.sh"
@@ -119,7 +119,7 @@ resource "task" "staged_files" {
   }
 
   condition "multiple_files_staged" {
-    description = "At least 2 files are staged for commit"
+    description = "Multiple files (2 or more) are in the staging area"
 
     check {
       script = "scripts/staged_files/check.sh"
@@ -146,7 +146,7 @@ resource "task" "gitignore_working" {
   }
 
   condition "gitignore_has_content" {
-    description = ".gitignore file has patterns"
+    description = ".gitignore file contains at least one pattern"
 
     check {
       script = "scripts/gitignore_working/check_content.sh"
@@ -155,7 +155,7 @@ resource "task" "gitignore_working" {
   }
 
   condition "gitignore_committed" {
-    description = ".gitignore file is committed"
+    description = ".gitignore file is tracked and committed"
 
     check {
       script = "scripts/gitignore_working/check_committed.sh"
@@ -173,7 +173,7 @@ resource "task" "branch_created" {
   }
 
   condition "branch_exists" {
-    description = "A new branch has been created"
+    description = "At least one branch exists besides main"
 
     check {
       script = "scripts/branch_created/check.sh"
@@ -191,7 +191,7 @@ resource "task" "commits_on_branch" {
   }
 
   condition "commits_made" {
-    description = "Commits have been made on a non-main branch"
+    description = "At least one commit exists on the feature branch"
 
     check {
       script = "scripts/commits_on_branch/check_commits.sh"
@@ -209,7 +209,7 @@ resource "task" "switch_to_main" {
   }
 
   condition "on_main" {
-    description = "Currently on main branch"
+    description = "HEAD is pointing to the main branch"
 
     check {
       script = "scripts/branch_merged/check_on_main.sh"
@@ -227,7 +227,7 @@ resource "task" "branch_merged" {
   }
 
   condition "branch_merged" {
-    description = "Branch has been successfully merged"
+    description = "Feature branch commits are now part of main branch history"
 
     check {
       script = "scripts/branch_merged/check_merged.sh"
@@ -244,21 +244,21 @@ resource "task" "conflict_resolved" {
     target = resource.container.git_workstation
   }
 
-  condition "merge_completed" {
-    description = "Merge is no longer in progress"
-
-    check {
-      script = "scripts/conflict_resolved/check_no_merge.sh"
-      failure_message = "The merge is still in progress. Have you staged the resolved files and completed the merge?"
-    }
-  }
-
   condition "no_conflict_markers" {
-    description = "Conflict markers have been removed"
+    description = "Conflict markers have been removed from files"
 
     check {
       script = "scripts/conflict_resolved/check_no_markers.sh"
       failure_message = "Conflict markers are still present in your files. Have you edited them to choose what to keep?"
+    }
+  }
+
+  condition "merge_completed" {
+    description = "Resolved files are staged and merge is committed"
+
+    check {
+      script = "scripts/conflict_resolved/check_no_merge.sh"
+      failure_message = "The merge is still in progress. Have you staged the resolved files and completed the merge?"
     }
   }
 }
@@ -272,7 +272,7 @@ resource "task" "remote_cloned" {
   }
 
   condition "clone_directory_exists" {
-    description = "Cloned directory exists"
+    description = "team-project directory exists in workspace"
 
     check {
       script = "scripts/remote_cloned/check_directory.sh"
@@ -281,7 +281,7 @@ resource "task" "remote_cloned" {
   }
 
   condition "clone_is_git_repo" {
-    description = "Cloned directory is a Git repository"
+    description = "team-project contains a .git directory"
 
     check {
       script = "scripts/remote_cloned/check_git_repo.sh"
@@ -290,7 +290,7 @@ resource "task" "remote_cloned" {
   }
 
   condition "origin_configured" {
-    description = "Origin remote is configured"
+    description = "origin remote points to the source repository"
 
     check {
       script = "scripts/remote_cloned/check_origin.sh"
@@ -308,7 +308,7 @@ resource "task" "make_changes_for_push" {
   }
 
   condition "changes_made" {
-    description = "Changes have been made and committed"
+    description = "New commits exist in the local repository"
 
     check {
       script = "scripts/make_changes_for_push/check_new_commit.sh"
@@ -326,7 +326,7 @@ resource "task" "changes_pushed" {
   }
 
   condition "changes_pushed" {
-    description = "Changes have been pushed to remote"
+    description = "Local commits are uploaded to origin/main"
 
     check {
       script = "scripts/changes_pushed/check.sh"
@@ -344,7 +344,7 @@ resource "task" "changes_pulled" {
   }
 
   condition "changes_pulled" {
-    description = "Local branch is up to date with remote"
+    description = "Local main branch matches origin/main"
 
     check {
       script = "scripts/changes_pulled/check.sh"
