@@ -1,6 +1,4 @@
 resource "terminal" "shell" {
-  title = "Git Terminal"
-
   target = resource.container.git_workstation
   shell = "/bin/bash"
   working_directory = "/root/workspace"

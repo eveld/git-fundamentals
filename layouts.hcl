@@ -3,6 +3,7 @@ resource "layout" "terminal_instructions" {
     width = 60
 
     tab "terminal" {
+      title = "Git Terminal"
       target = resource.terminal.shell
     }
   }
