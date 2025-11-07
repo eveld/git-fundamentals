@@ -213,12 +213,9 @@ git push origin :feature/old-feature
 
 ## Best Practices for Pushing
 
-1. **Commit first**: Only committed changes can be pushed
-2. **Pull before push**: Get latest changes before pushing yours
-3. **Test locally**: Make sure your code works before pushing
-4. **Use meaningful commits**: Others will see your commit messages
-5. **Push regularly**: Don't wait days - push completed work frequently
-6. **Avoid force push**: Especially on shared branches like `main`
+Remember that only committed changes can be pushed - Git won't upload files that are just staged or modified. Before pushing, pull the latest changes to avoid conflicts and ensure you're working with the current state of the remote. Test your code locally before pushing so you don't break things for others.
+
+Use meaningful commit messages because others will see them when they pull your changes. Push completed work regularly rather than waiting days - this keeps the team in sync and makes collaboration smoother. Avoid force pushing, especially on shared branches like `main`, because it can rewrite history and cause problems for teammates who have already pulled the old commits.
 
 ## Task
 

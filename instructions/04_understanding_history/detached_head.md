@@ -190,14 +190,6 @@ git switch --detach HEAD~3
 
 The `--detach` flag makes it explicit.
 
-## Key Points
-
-- Detached HEAD means HEAD points to a commit, not a branch
-- It's safe for viewing old code
-- Commits made in detached HEAD are orphaned unless you create a branch
-- Exit detached HEAD by checking out a branch: `git checkout main`
-- It's a useful state for exploration and testing
-- Save work by creating a branch before switching away
 
 ## Don't Panic!
 

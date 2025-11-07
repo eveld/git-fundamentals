@@ -148,19 +148,4 @@ git commit -a -m "Add notes section to README"
 
 ## The Staging Area's Power
 
-The staging area might seem like extra work, but it gives you control:
-
-- Make multiple changes, commit them separately
-- Review changes before committing
-- Build logical commits that tell a story
-- Keep your history clean and meaningful
-
-## Key Points
-
-- The workflow is always: Modify → Stage → Commit
-- `git diff` shows unstaged changes
-- `git diff --staged` shows staged changes
-- `git status` tells you where you are in the workflow
-- Good commit messages make history useful
-- You can commit directly with `-a` for tracked files
-
+The staging area might seem like extra work at first, but it gives you control that makes your Git history far more useful. You can make multiple changes throughout the day but commit them separately, each with a clear purpose. You can review changes before committing them, catching mistakes before they become part of history. You can build logical commits that tell a story, making it easy for others (and future you) to understand why changes were made. This discipline keeps your history clean and meaningful - and that matters when you're debugging or trying to understand how code evolved.

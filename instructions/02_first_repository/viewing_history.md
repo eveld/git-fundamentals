@@ -1,6 +1,8 @@
 # Viewing Commit History
 
-Now that you've made your first commit, let's learn how to explore your project's history. Git provides powerful tools for viewing commits and understanding how your project has evolved.
+Now that you've made your first commit, let's learn how to explore your project's history. Being able to view past commits is crucial when debugging - you need to know what changed and when. When someone reports a bug that wasn't there last week, you'll want to see what commits happened between then and now. When you're curious why a particular function exists, you can trace it back to the original commit and read the author's explanation in the commit message.
+
+Git provides powerful tools for viewing commits and understanding how your project has evolved. Think of `git log` as your project's time machine interface - it lets you browse through history, search for specific changes, and understand the story of how your code came to be.
 
 ## The Git Log
 
@@ -21,13 +23,7 @@ Date:   Thu Nov 7 14:32:15 2024 +0000
     Add README file
 </instruqt-code>
 
-Each commit shows:
-- **Commit hash**: Unique identifier (SHA-1 hash)
-- **Author**: Who made the commit
-- **Date**: When it was created
-- **Message**: Description of the changes
-
-Press `q` to exit the log viewer.
+Each commit shows four key pieces of information: the commit hash (a unique SHA-1 identifier), the author who made the commit, the timestamp of when it was created, and the commit message describing what changed. Press `q` to exit the log viewer.
 
 ## Shorter Log Format
 
@@ -83,11 +79,4 @@ Git commits form a timeline, where each commit points to its parent:
 
 This chain of commits is your project's history. You can always go back to any point in time.
 
-## Key Points
-
-- `git log` shows commit history
-- `git log --oneline` provides a compact view
-- `git show` displays details of a specific commit
-- `HEAD` points to your current position in history
-- Commits are listed newest first by default
 

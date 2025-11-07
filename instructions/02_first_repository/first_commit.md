@@ -1,14 +1,14 @@
 # Making Your First Commit
 
-Now that you have a Git repository, let's create your first commit. A commit is a snapshot of your project at a specific moment.
+Now that you have a Git repository, let's create your first commit. A commit is a snapshot of your project at a specific moment - a checkpoint you can return to later.
+
+Why three steps instead of just saving your changes directly? This workflow gives you control and precision. Imagine you've spent the afternoon working on five different files: fixing a bug, adding a feature, and updating documentation. You could throw all these changes into one commit, but that makes your history messy. Which change caused a problem later? What if you want to undo just the documentation change?
+
+Git's three-step workflow solves this. You modify files as you work, then deliberately choose which changes form each commit. This lets you create clean, logical checkpoints in your history - one for the bug fix, one for the feature, and one for the documentation. Each commit tells a clear story about what changed and why.
 
 ## The Three-Step Workflow
 
-Every commit follows this pattern:
-
-1. **Modify** - Change files in your working directory
-2. **Stage** - Select which changes to include in the next commit
-3. **Commit** - Create a snapshot with a descriptive message
+Every commit follows this pattern: **Modify → Stage → Commit**. You change files in your working directory, select which changes to include in the next commit, and then create a snapshot with a descriptive message.
 
 Let's walk through each step.
 
@@ -93,13 +93,7 @@ See your commit history:
 git log
 </instruqt-code>
 
-You'll see:
-- Commit hash (unique identifier)
-- Author (you!)
-- Date
-- Commit message
-
-Press `q` to exit the log viewer.
+You'll see your commit with its unique identifier (the commit hash), your name as the author, the timestamp, and your commit message. This is the beginning of your project's timeline. Press `q` to exit the log viewer.
 
 ## Shorter Log Format
 

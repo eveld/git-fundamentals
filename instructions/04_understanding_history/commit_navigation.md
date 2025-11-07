@@ -155,12 +155,4 @@ This shows every place HEAD has pointed, even if commits aren't in the current b
 | `main~3` | Three commits back on main |
 | `a1b2c3d` | Specific commit by hash |
 
-## Key Points
-
-- `HEAD` points to your current commit
-- `~` lets you reference parent commits (HEAD~1, HEAD~2, etc.)
-- You don't need full hashes, abbreviated versions work fine
-- `git show` displays commit details and changes
-- `git diff` compares any two commits
-- Relative references make navigation easy without memorizing hashes
 

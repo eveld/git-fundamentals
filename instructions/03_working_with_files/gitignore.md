@@ -4,14 +4,11 @@ Not every file in your project directory should be tracked by Git. The `.gitigno
 
 ## Why Ignore Files?
 
-Common reasons to ignore files:
+Not everything in your project directory belongs in version control. Build artifacts like compiled code and binaries are generated from your source files - tracking them is redundant and bloats your repository. Dependencies like `node_modules/` or Python virtual environments can be recreated from package files, so there's no reason to commit thousands of files you didn't write.
 
-- **Build artifacts**: Compiled code, binaries (e.g., `*.o`, `*.class`, `*.pyc`)
-- **Dependencies**: Node modules, Python virtual environments (e.g., `node_modules/`, `venv/`)
-- **OS files**: System-specific files (e.g., `.DS_Store`, `Thumbs.db`)
-- **IDE settings**: Editor configuration (e.g., `.vscode/`, `.idea/`)
-- **Secrets**: API keys, credentials (e.g., `.env`, `secrets.json`)
-- **Temporary files**: Logs, caches (e.g., `*.log`, `tmp/`)
+OS-specific files like `.DS_Store` on macOS or `Thumbs.db` on Windows are noise that pollutes the repository without providing value. IDE settings are personal preferences that shouldn't be forced on other developers. Most importantly, secrets like API keys and credentials must never be committed - once something is in Git history, it's extremely difficult to remove completely.
+
+Temporary files like logs and caches are generated during development and don't represent the source of truth. Tracking them creates noise in your diffs and makes it harder to see real changes. A good `.gitignore` file keeps your repository clean, focused on source code that matters.
 
 ## Creating a .gitignore File
 

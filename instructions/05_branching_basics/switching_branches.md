@@ -178,12 +178,4 @@ git log main..feature
 git diff main..feature
 </instruqt-code>
 
-## Key Points
-
-- `git checkout <branch>` or `git switch <branch>` switches branches
-- `git checkout -b <branch>` or `git switch -c <branch>` creates and switches
-- Switching updates your working directory to match the branch
-- Changes made on one branch don't affect other branches
-- Commit or stash changes before switching to avoid conflicts
-- Use `git switch` for clarity (if using modern Git)
 

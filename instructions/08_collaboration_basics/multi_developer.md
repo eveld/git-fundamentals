@@ -334,13 +334,4 @@ git push origin main
 7. **Push** - Share your changes
 8. **Merge** - Merge your branch to main (if using branches)
 
-## Key Points
-
-- Multiple developers can work on the same repository simultaneously
-- Git handles merging automatically when changes don't conflict
-- Conflicts require manual resolution
-- Pull frequently to stay synchronized
-- Push regularly to share your work
-- Use branches for features to avoid blocking others
-- Clear commit messages help team coordination
 

@@ -4,19 +4,13 @@ Not all merges are fast-forward merges. When two branches modify the same part o
 
 ## When Do Conflicts Happen?
 
-Conflicts occur when:
-1. Two branches modify the same lines in a file
-2. One branch modifies a file while another deletes it
-3. Both branches create a file with the same name but different content
+Conflicts occur when two branches modify the same lines in a file, when one branch modifies a file while another deletes it, or when both branches create a file with the same name but different content. Git can merge changes in different parts of a file automatically, but when the same lines change in both branches, it needs your help deciding which version to keep.
 
 ## Why Conflicts Are Normal
 
-Conflicts are a natural part of collaborative development. They happen when:
-- Two developers work on the same feature
-- You're working on a long-lived feature branch while main continues to evolve
-- Parallel bug fixes touch the same code
+Conflicts are a natural part of collaborative development. They happen when two developers work on the same feature, when you're working on a long-lived feature branch while main continues to evolve, or when parallel bug fixes touch the same code. In active projects with multiple contributors, conflicts are inevitable and frequent.
 
-Don't panic when you see a conflict - it just means Git needs your help deciding what the final version should look like.
+Don't panic when you see a conflict - it just means Git needs your help deciding what the final version should look like. Git is being cautious by not making assumptions about which changes should win. This is actually a feature, not a bug - it prevents Git from silently choosing the wrong version and creating subtle bugs.
 
 ## Diverged Branches
 
@@ -113,10 +107,7 @@ CONFLICT (content): Merge conflict in conflict-demo.txt
 Automatic merge failed; fix conflicts and then commit the result.
 </instruqt-code>
 
-Git is telling you:
-1. It tried to merge `conflict-demo.txt`
-2. There's a conflict in that file
-3. You need to fix it manually
+Git is telling you it tried to merge `conflict-demo.txt`, found a conflict in that file, and needs you to fix it manually before the merge can complete.
 
 ## Checking Conflict Status
 
@@ -177,18 +168,5 @@ Everything between `=======` and `>>>>>>> feature-branch` is from the branch you
 
 ## Avoiding Conflicts
 
-While you can't always avoid conflicts, you can minimize them:
-1. Merge or rebase frequently to keep branches in sync
-2. Communicate with team members about what you're working on
-3. Keep commits focused and small
-4. Use feature flags instead of long-lived branches
-
-## Key Points
-
-- Conflicts happen when branches modify the same code differently
-- Git marks conflicts with special markers: `<<<<<<<`, `=======`, `>>>>>>>`
-- Three-way merges create a merge commit with two parents
-- Conflicts are normal and not something to fear
-- `git status` shows which files have conflicts
-- You must manually resolve conflicts before completing the merge
+While you can't always avoid conflicts, you can minimize them through good practices. Merge or rebase frequently to keep branches in sync - the longer branches diverge, the more likely conflicts become. Communicate with team members about what you're working on so you don't both modify the same files simultaneously. Keep commits focused and small so conflicts, when they do occur, are easier to understand and resolve. Consider using feature flags instead of long-lived branches, allowing you to merge incomplete features into main without exposing them to users.
 
