@@ -409,6 +409,80 @@ scripts/
 
 **Don't keep old monolithic `check.sh` files** - remove them to avoid confusion about which scripts are actually used.
 
+## Active Learning vs. Passive Verification
+
+**Users should DO, not just VERIFY.**
+
+It's tempting to pre-configure everything in setup scripts to ensure a smooth experience. But if you pre-configure something you want users to learn, you've eliminated the learning opportunity.
+
+### The Problem
+
+❌ **Bad: Pre-configure, then ask to verify**
+```bash
+# setup script
+git config --global user.name "Lab Student"
+git config --global user.email "student@instruqt.lab"
+```
+
+```markdown
+# instruction page
+Your Git identity has been pre-configured. Verify it:
+
+git config --global user.name
+```
+
+What the user learns: How to read configuration (not valuable)
+
+✅ **Good: Let users configure**
+```bash
+# setup script - don't configure identity
+# Only configure things NOT being taught
+git config --global init.defaultBranch main
+git config --global core.editor "nano"
+```
+
+```markdown
+# instruction page
+Configure your Git identity:
+
+git config --global user.name "Lab Student"
+git config --global user.email "student@instruqt.lab"
+```
+
+What the user learns: How to configure Git (valuable)
+
+### Guidelines
+
+**Pre-configure:**
+- Infrastructure (bare repositories, network setup)
+- Environment basics (package installation)
+- Settings NOT being taught as learning objectives
+- Things that would block progress if misconfigured
+
+**DON'T pre-configure:**
+- Commands you want users to run
+- Concepts that are learning objectives
+- Workflows you're teaching
+- Configuration that's the point of the exercise
+
+### Example: Git Configuration
+
+In a Git fundamentals lab:
+- **Pre-configure**: `init.defaultBranch`, `core.editor` (not learning objectives)
+- **User configures**: `user.name`, `user.email` (core learning objective)
+
+Even if your setup script needs Git configured for its own operations (like creating an initial commit), use local configuration for that temporary work, not global configuration that would pre-answer the exercise.
+
+### Ask Yourself
+
+Before pre-configuring something in a setup script:
+- Is this a learning objective?
+- Do I want users to know how to do this?
+- Will they encounter this in real work?
+- Am I removing a valuable learning opportunity?
+
+If yes to any of these, let users do it themselves.
+
 ## Summary Checklist
 
 When creating lab content, ask yourself:
@@ -427,6 +501,8 @@ When creating lab content, ask yourself:
 - [ ] Is there a balance between narrative and structured information?
 - [ ] Are bullet points used sparingly, only where appropriate?
 - [ ] Does each concept include real-world context or examples?
+- [ ] Are users actively DOING tasks, not just verifying pre-configured settings?
+- [ ] Have I avoided pre-configuring things that are learning objectives?
 
 ## The Golden Rule
 
