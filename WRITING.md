@@ -483,6 +483,68 @@ Before pre-configuring something in a setup script:
 
 If yes to any of these, let users do it themselves.
 
+## Don't Accidentally Complete Future Tasks
+
+**Be careful with examples in earlier chapters.**
+
+When writing code examples, it's easy to accidentally use files or commands that complete tasks in later chapters. This ruins the learning experience.
+
+### The Problem
+
+❌ **Bad: Example completes future task**
+
+In Chapter 3 "Staging Changes":
+```bash
+# Create example files
+echo "def add(a, b): return a + b" > math_utils.py
+echo "*.pyc" > .gitignore      # Oops! This completes the Chapter 3 gitignore task
+git add math_utils.py .gitignore
+```
+
+Later in Chapter 3 "Ignoring Files":
+```
+Task: Create a .gitignore file...
+```
+
+The user already did this! If they copy-pasted the earlier example, the task is pointless.
+
+✅ **Good: Example uses different files**
+
+In Chapter 3 "Staging Changes":
+```bash
+# Create example files
+echo "def add(a, b): return a + b" > math_utils.py
+echo "DEBUG = True" > config.py  # Use config.py instead
+git add math_utils.py config.py
+```
+
+Later in Chapter 3 "Ignoring Files":
+```
+Task: Create a .gitignore file...  # This is now the first time they do it
+```
+
+### Guidelines
+
+Before including an example:
+1. **Check future tasks**: Does this example do something a later task asks for?
+2. **Use neutral examples**: Choose files that aren't learning objectives
+3. **Be specific**: If teaching .gitignore, don't create .gitignore earlier
+4. **Review chapter sequence**: Map out what each task teaches
+
+### Common Pitfalls
+
+- Using `.gitignore` in staging examples (when gitignore is taught later)
+- Creating branches in earlier examples (when branches are taught later)
+- Showing merge commands before the merge chapter
+- Including remote operations before teaching remotes
+
+### The Fix
+
+When you need an example but the obvious choice is a future task:
+- Use generic placeholder files (file1.txt, file2.txt)
+- Use domain-appropriate but non-task files (config.py, settings.json)
+- Focus the example on the current concept, not future ones
+
 ## Summary Checklist
 
 When creating lab content, ask yourself:
@@ -503,6 +565,8 @@ When creating lab content, ask yourself:
 - [ ] Does each concept include real-world context or examples?
 - [ ] Are users actively DOING tasks, not just verifying pre-configured settings?
 - [ ] Have I avoided pre-configuring things that are learning objectives?
+- [ ] Do examples avoid accidentally completing future tasks?
+- [ ] Have I reviewed the chapter sequence to prevent task overlap?
 
 ## The Golden Rule
 

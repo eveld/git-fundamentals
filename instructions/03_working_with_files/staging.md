@@ -28,7 +28,7 @@ cd /root/workspace/my-project
 # Create three new files
 echo "def add(a, b): return a + b" > math_utils.py
 echo "import math_utils" > main.py
-echo "*.pyc" > .gitignore
+echo "DEBUG = True" > config.py
 </instruqt-code>
 
 Check the status:
@@ -59,7 +59,7 @@ Stage the remaining files:
 
 <instruqt-code language="bash">
 # Stage specific files
-git add main.py .gitignore
+git add main.py config.py
 
 # Or stage all at once
 # git add .
