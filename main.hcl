@@ -1,18 +1,18 @@
 resource "lab" "git_fundamentals" {
-  title = "Git Fundamentals"
-  description = file("description.md")
-  tags = ["git", "version-control", "beginner", "fundamentals"]
+  title       = "Git Fundamentals"
+  description = "file([\"description.md\"])"
+  tags        = ["git", "version-control", "beginner", "fundamentals"]
 
   settings {
     timelimit {
-      duration = 90
-      extend = 15
+      duration   = "90"
+      extend     = "15"
       show_timer = true
     }
 
     idle {
-      enabled = true
-      timeout = 30
+      enabled      = true
+      timeout      = "30"
       show_warning = true
     }
 
@@ -28,12 +28,12 @@ resource "lab" "git_fundamentals" {
       title = "Git Basics"
 
       page "what_is_git" {
-        title = "What is Git?"
+        title     = "What is Git?"
         reference = resource.page.what_is_git
       }
 
       page "configuration" {
-        title = "Configuration"
+        title     = "Configuration"
         reference = resource.page.configuration
       }
     }
@@ -42,17 +42,17 @@ resource "lab" "git_fundamentals" {
       title = "Your First Repository"
 
       page "init" {
-        title = "Initializing a Repository"
+        title     = "Initializing a Repository"
         reference = resource.page.init
       }
 
       page "first_commit" {
-        title = "Making Your First Commit"
+        title     = "Making Your First Commit"
         reference = resource.page.first_commit
       }
 
       page "viewing_history" {
-        title = "Viewing Commit History"
+        title     = "Viewing Commit History"
         reference = resource.page.viewing_history
       }
     }
@@ -61,17 +61,17 @@ resource "lab" "git_fundamentals" {
       title = "Working with Files"
 
       page "staging" {
-        title = "Staging Changes"
+        title     = "Staging Changes"
         reference = resource.page.staging
       }
 
       page "commit_workflow" {
-        title = "The Commit Workflow"
+        title     = "The Commit Workflow"
         reference = resource.page.commit_workflow
       }
 
       page "gitignore" {
-        title = "Ignoring Files"
+        title     = "Ignoring Files"
         reference = resource.page.gitignore
       }
     }
@@ -80,17 +80,17 @@ resource "lab" "git_fundamentals" {
       title = "Understanding History"
 
       page "git_log" {
-        title = "Exploring Git Log"
+        title     = "Exploring Git Log"
         reference = resource.page.git_log
       }
 
       page "commit_navigation" {
-        title = "Navigating Commits"
+        title     = "Navigating Commits"
         reference = resource.page.commit_navigation
       }
 
       page "detached_head" {
-        title = "Detached HEAD State"
+        title     = "Detached HEAD State"
         reference = resource.page.detached_head
       }
     }
@@ -99,17 +99,17 @@ resource "lab" "git_fundamentals" {
       title = "Branching Basics"
 
       page "creating_branches" {
-        title = "Creating Branches"
+        title     = "Creating Branches"
         reference = resource.page.creating_branches
       }
 
       page "switching_branches" {
-        title = "Switching Branches"
+        title     = "Switching Branches"
         reference = resource.page.switching_branches
       }
 
       page "fast_forward_merge" {
-        title = "Fast-Forward Merges"
+        title     = "Fast-Forward Merges"
         reference = resource.page.fast_forward_merge
       }
     }
@@ -118,12 +118,12 @@ resource "lab" "git_fundamentals" {
       title = "Handling Merge Conflicts"
 
       page "understanding_conflicts" {
-        title = "Understanding Conflicts"
+        title     = "Understanding Conflicts"
         reference = resource.page.understanding_conflicts
       }
 
       page "resolving_conflicts" {
-        title = "Resolving Conflicts"
+        title     = "Resolving Conflicts"
         reference = resource.page.resolving_conflicts
       }
     }
@@ -132,17 +132,17 @@ resource "lab" "git_fundamentals" {
       title = "Working with Remotes"
 
       page "cloning" {
-        title = "Cloning Repositories"
+        title     = "Cloning Repositories"
         reference = resource.page.cloning
       }
 
       page "pushing" {
-        title = "Pushing Changes"
+        title     = "Pushing Changes"
         reference = resource.page.pushing
       }
 
       page "pulling" {
-        title = "Pulling Changes"
+        title     = "Pulling Changes"
         reference = resource.page.pulling
       }
     }
@@ -151,12 +151,12 @@ resource "lab" "git_fundamentals" {
       title = "Collaboration Basics"
 
       page "multi_developer" {
-        title = "Multi-Developer Workflow"
+        title     = "Multi-Developer Workflow"
         reference = resource.page.multi_developer
       }
 
       page "conclusion" {
-        title = "Conclusion"
+        title     = "Conclusion"
         reference = resource.page.conclusion
       }
     }

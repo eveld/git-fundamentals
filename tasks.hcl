@@ -10,7 +10,7 @@ resource "task" "git_configured" {
     description = "Git user name is configured"
 
     check {
-      script = "scripts/git_configured/check_name.sh"
+      script          = "scripts/git_configured/check_name.sh"
       failure_message = "Git user name is not configured. Have you set your user.name?"
     }
   }
@@ -19,7 +19,7 @@ resource "task" "git_configured" {
     description = "Git user email is configured"
 
     check {
-      script = "scripts/git_configured/check_email.sh"
+      script          = "scripts/git_configured/check_email.sh"
       failure_message = "Git user email is not configured. Have you set your user.email?"
     }
   }
@@ -37,7 +37,7 @@ resource "task" "repo_initialized" {
     description = "Project directory exists"
 
     check {
-      script = "scripts/repo_initialized/check_directory.sh"
+      script          = "scripts/repo_initialized/check_directory.sh"
       failure_message = "The my-project directory doesn't exist yet. Did you create it?"
     }
   }
@@ -46,7 +46,7 @@ resource "task" "repo_initialized" {
     description = "Git repository has been initialized"
 
     check {
-      script = "scripts/repo_initialized/check_git_init.sh"
+      script          = "scripts/repo_initialized/check_git_init.sh"
       failure_message = "Git repository not initialized. Have you run the init command in the correct directory?"
     }
   }
@@ -64,7 +64,7 @@ resource "task" "create_readme" {
     description = "README.md file exists in the working directory"
 
     check {
-      script = "scripts/create_readme/check_file_exists.sh"
+      script          = "scripts/create_readme/check_file_exists.sh"
       failure_message = "README.md file not found. Have you created it in the right location?"
     }
   }
@@ -82,7 +82,7 @@ resource "task" "stage_readme" {
     description = "README.md is in the staging area"
 
     check {
-      script = "scripts/stage_readme/check_staged.sh"
+      script          = "scripts/stage_readme/check_staged.sh"
       failure_message = "README.md is not staged. Have you used the add command?"
     }
   }
@@ -100,7 +100,7 @@ resource "task" "first_commit" {
     description = "At least one commit exists in the repository"
 
     check {
-      script = "scripts/first_commit/check_commit.sh"
+      script          = "scripts/first_commit/check_commit.sh"
       failure_message = "No commits found yet. Have you created a commit with a message?"
     }
 
@@ -122,7 +122,7 @@ resource "task" "staged_files" {
     description = "Multiple files (2 or more) are in the staging area"
 
     check {
-      script = "scripts/staged_files/check.sh"
+      script          = "scripts/staged_files/check.sh"
       failure_message = "Not enough files are staged. You need at least 2 files in the staging area."
     }
   }
@@ -140,7 +140,7 @@ resource "task" "gitignore_working" {
     description = ".gitignore file exists"
 
     check {
-      script = "scripts/gitignore_working/check_exists.sh"
+      script          = "scripts/gitignore_working/check_exists.sh"
       failure_message = "No .gitignore file found. Have you created one?"
     }
   }
@@ -149,7 +149,7 @@ resource "task" "gitignore_working" {
     description = ".gitignore file contains at least one pattern"
 
     check {
-      script = "scripts/gitignore_working/check_content.sh"
+      script          = "scripts/gitignore_working/check_content.sh"
       failure_message = "The .gitignore file is empty. What patterns do you want to ignore?"
     }
   }
@@ -158,7 +158,7 @@ resource "task" "gitignore_working" {
     description = ".gitignore file is tracked and committed"
 
     check {
-      script = "scripts/gitignore_working/check_committed.sh"
+      script          = "scripts/gitignore_working/check_committed.sh"
       failure_message = "The .gitignore file is not committed yet. Should it be tracked by Git?"
     }
   }
@@ -176,7 +176,7 @@ resource "task" "branch_created" {
     description = "At least one branch exists besides main"
 
     check {
-      script = "scripts/branch_created/check.sh"
+      script          = "scripts/branch_created/check.sh"
       failure_message = "No new branch found. Have you created one besides main?"
     }
   }
@@ -194,7 +194,7 @@ resource "task" "commits_on_branch" {
     description = "At least one commit exists on the feature branch"
 
     check {
-      script = "scripts/commits_on_branch/check_commits.sh"
+      script          = "scripts/commits_on_branch/check_commits.sh"
       failure_message = "No commits found on your feature branch. Are you on the right branch?"
     }
   }
@@ -212,7 +212,7 @@ resource "task" "switch_to_main" {
     description = "HEAD is pointing to the main branch"
 
     check {
-      script = "scripts/branch_merged/check_on_main.sh"
+      script          = "scripts/branch_merged/check_on_main.sh"
       failure_message = "You're not on the main branch. How do you switch branches?"
     }
   }
@@ -230,7 +230,7 @@ resource "task" "branch_merged" {
     description = "Feature branch commits are now part of main branch history"
 
     check {
-      script = "scripts/branch_merged/check_merged.sh"
+      script          = "scripts/branch_merged/check_merged.sh"
       failure_message = "The branches haven't been merged yet. What command brings changes from one branch to another?"
     }
   }
@@ -248,7 +248,7 @@ resource "task" "conflict_resolved" {
     description = "Conflict markers have been removed from files"
 
     check {
-      script = "scripts/conflict_resolved/check_no_markers.sh"
+      script          = "scripts/conflict_resolved/check_no_markers.sh"
       failure_message = "Conflict markers are still present in your files. Have you edited them to choose what to keep?"
     }
   }
@@ -257,7 +257,7 @@ resource "task" "conflict_resolved" {
     description = "Resolved files are staged and merge is committed"
 
     check {
-      script = "scripts/conflict_resolved/check_no_merge.sh"
+      script          = "scripts/conflict_resolved/check_no_merge.sh"
       failure_message = "The merge is still in progress. Have you staged the resolved files and completed the merge?"
     }
   }
@@ -275,7 +275,7 @@ resource "task" "remote_cloned" {
     description = "team-project directory exists in workspace"
 
     check {
-      script = "scripts/remote_cloned/check_directory.sh"
+      script          = "scripts/remote_cloned/check_directory.sh"
       failure_message = "The team-project directory doesn't exist. Have you cloned the repository?"
     }
   }
@@ -284,7 +284,7 @@ resource "task" "remote_cloned" {
     description = "team-project contains a .git directory"
 
     check {
-      script = "scripts/remote_cloned/check_git_repo.sh"
+      script          = "scripts/remote_cloned/check_git_repo.sh"
       failure_message = "The team-project directory exists but isn't a Git repository. Did you use the clone command?"
     }
   }
@@ -293,7 +293,7 @@ resource "task" "remote_cloned" {
     description = "origin remote points to the source repository"
 
     check {
-      script = "scripts/remote_cloned/check_origin.sh"
+      script          = "scripts/remote_cloned/check_origin.sh"
       failure_message = "No origin remote is configured. Cloning should set this up automatically."
     }
   }
@@ -311,7 +311,7 @@ resource "task" "make_changes_for_push" {
     description = "New commits exist in the local repository"
 
     check {
-      script = "scripts/make_changes_for_push/check_new_commit.sh"
+      script          = "scripts/make_changes_for_push/check_new_commit.sh"
       failure_message = "No new commits found. Have you made changes and committed them in team-project?"
     }
   }
@@ -329,7 +329,7 @@ resource "task" "changes_pushed" {
     description = "Local commits are uploaded to origin/main"
 
     check {
-      script = "scripts/changes_pushed/check.sh"
+      script          = "scripts/changes_pushed/check.sh"
       failure_message = "Your commits haven't reached the remote yet. What command sends local commits to origin?"
     }
   }
@@ -347,7 +347,7 @@ resource "task" "changes_pulled" {
     description = "Local main branch matches origin/main"
 
     check {
-      script = "scripts/changes_pulled/check.sh"
+      script          = "scripts/changes_pulled/check.sh"
       failure_message = "Your local branch is behind the remote. What command fetches and merges remote changes?"
     }
   }

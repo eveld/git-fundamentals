@@ -12,7 +12,7 @@ resource "container" "git_workstation" {
   }
 
   volume {
-    source = "scripts/setup"
+    source      = "scripts/setup"
     destination = "/tmp/setup"
   }
 }
